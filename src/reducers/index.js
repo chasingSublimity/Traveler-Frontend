@@ -1,8 +1,16 @@
+import {createStore, combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
 import * as actions from '../actions/index';
 
-const initialState = {};
+const initialState = {
+		firstname: '',
+		lastName: '',
+		userName: '',
+		password: ''
+};
 
-export const reducer = (state=initialState, action) => {
+
+const mainReducer = (state=initialState, action) => {
 	let newState = {};
 
 	// switch (action.type) {
@@ -11,3 +19,10 @@ export const reducer = (state=initialState, action) => {
 
 	return state;
 };
+
+const reducers = {
+	main: mainReducer,
+	form: formReducer
+};
+
+export const reducer = combineReducers(reducers);

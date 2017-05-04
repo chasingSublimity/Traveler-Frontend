@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import UserCreateForm from './UserCreateForm';
 import '../css/UserCreate.css';
 
 class UserCreate extends Component {
+
+	handleSubmit(values) {
+		console.log(values);
+	}
+
 	render() {
 		return (
 			<div className="UserCreate">
@@ -11,20 +17,10 @@ class UserCreate extends Component {
 				</div>
 
 				<p className="UserCreate-intro">
-				To get started, create a user below!
+					To get started, create a user below!
 				</p>
 
-				<form className="UserCreate-form" action="" method="post">
-					<label htmlFor="firstName">First Name:</label>
-					<input className="UserCreate-input" id="firstName" type="text" name="firstName"/>
-					<label htmlFor="lastName">Last Name:</label>
-					<input className="UserCreate-input" id="lastName" type="text" name="lastName"/>
-					<label htmlFor="userName">Username:</label>
-					<input className="UserCreate-input" id="userName" type="text" name="userName"/>
-					<label htmlFor="password">Password:</label>
-					<input className="UserCreate-input" id="password" type="text" name="password"/>
-					<input type="submit" value="Submit"/>
-				</form>
+				<UserCreateForm onSubmit={this.handleSubmit}/>
 
 			</div>
 		);

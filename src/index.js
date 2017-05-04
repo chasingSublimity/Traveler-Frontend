@@ -7,6 +7,8 @@ import UserCreate from './components/UserCreate';
 import './css/index.css';
 
 ReactDOM.render(
-  <UserCreate />,
+	<Provider store={store}>
+		<UserCreate />
+  </Provider>,
   document.getElementById('root')
 );

@@ -1,0 +1,9 @@
+.UserCreateForm-form {
+  text-align: center;
+  border: 3px black solid;
+}
+
+.UserCreateForm-input {
+  display: block;
+  margin: auto;
+}
