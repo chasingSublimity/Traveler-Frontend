@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import UserCreate from './UserCreate';
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <UserCreate />,
   document.getElementById('root')
 );
