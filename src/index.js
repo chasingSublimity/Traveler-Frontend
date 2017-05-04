@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserCreate from './UserCreate';
-import './index.css';
+import {Provider} from 'react-redux';
+
+import store from './store';
+import UserCreate from './components/UserCreate';
+import './css/index.css';
 
 ReactDOM.render(
   <UserCreate />,
