@@ -33,8 +33,8 @@ class UserCreate extends Component {
 	}
 }
 
-const mapStateToProps = (state, props) => ({
+// const mapStateToProps = (state, props) => ({
 
-});
+// });
 
 export default connect()(UserCreate);
