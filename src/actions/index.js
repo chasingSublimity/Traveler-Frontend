@@ -5,15 +5,10 @@ import axios from 'axios';
 
 
 // send user creation post request to API
-export const submitUserCreateForm = (firstName, lastName, userName, password) => (dispatch) => {
-
+export const submitUserCreateForm = (userData) => (dispatch) => {
 	const url = 'https://still-coast-98142.herokuapp.com/users';
-	return axios.post(url, {
-		firstName,
-		lastName,
-		userName,
-		password
-	}).then(response => {
+	return axios.post(url, userData)
+		.then(response => {
 		console.log(response);
 	});
 };
