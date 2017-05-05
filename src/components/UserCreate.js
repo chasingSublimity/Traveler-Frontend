@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
 import UserCreateForm from './UserCreateForm';
 import '../css/UserCreate.css';
 
 class UserCreate extends Component {
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
 	handleSubmit(values) {
-		console.log(values);
+		this.props.dispatch(actions.submitUserCreateForm(values));
 	}
 
 	render() {
@@ -27,4 +33,8 @@ class UserCreate extends Component {
 	}
 }
 
-export default UserCreate;
+const mapStateToProps = (state, props) => ({
+
+});
+
+export default connect()(UserCreate);

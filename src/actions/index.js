@@ -1,10 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 
-// change API Key form input
-export const CHANGE_USER_SUBMIT_FORM = 'CHANGE_USER_SUBMIT_FORM';
-export const changeApiKeyInput = value =>({
-	type: CHANGE_USER_SUBMIT_FORM, 
+
+
+
+// send user creation post request to API
+export const submitUserCreateForm = (firstName, lastName, userName, password) => (dispatch) => {
+
+	const url = 'https://still-coast-98142.herokuapp.com/users';
+	return axios.post(url, {
+		firstName,
+		lastName,
+		userName,
+		password
+	}).then(response => {
+		console.log(response);
+	});
+};
+
+// fired after user is successfully created
+export const SUBMIT_USER_CREATE_FORM_SUCCESS = 'SUBMIT_USER_CREATE_FORM_SUCCESS';
+export const submitUserCreateFormSuccess = value =>({
+	type: SUBMIT_USER_CREATE_FORM_SUCCESS,
 	value
 });
 

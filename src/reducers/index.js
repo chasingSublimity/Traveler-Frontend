@@ -1,12 +1,9 @@
+import * as actions from '../actions/index';
 import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import * as actions from '../actions/index';
 
 const initialState = {
-		firstname: '',
-		lastName: '',
-		userName: '',
-		password: ''
+
 };
 
 
