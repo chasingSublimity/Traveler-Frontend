@@ -18,6 +18,22 @@ export const submitUserCreateFormSuccess = value =>({
 });
 
 
+// send trip creation post request to API
+export const submitTripCreateForm = (tripData) => (dispatch) => {
+	const url = 'https://still-coast-98142.herokuapp.com/trips';
+	return axios.post(url, tripData)
+		.then(response => {
+		console.log(response);
+	});
+};
+
+// fired after trip is successfully created
+export const SUBMIT_TRIP_CREATE_FORM_SUCCESS = 'SUBMIT_TRIP_CREATE_FORM_SUCCESS';
+export const submitTripCreateFormSuccess = value =>({
+	type: SUBMIT_TRIP_CREATE_FORM_SUCCESS,
+	value
+});
+
 // I'll save these and refactor for form submissions later
 
 // export const submitGroup = (groupName, groupId) => (dispatch, getState) => {
