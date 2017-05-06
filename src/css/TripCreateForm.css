@@ -1,0 +1,9 @@
+.TripCreateForm-form {
+  text-align: center;
+  border: 3px black solid;
+}
+
+.TripCreateForm-input {
+  display: block;
+  margin: auto;
+}
