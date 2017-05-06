@@ -1,0 +1,9 @@
+.MemoryCreateForm-form {
+  text-align: center;
+  border: 3px black solid;
+}
+
+.MemoryCreateForm-input {
+  display: block;
+  margin: auto;
+}

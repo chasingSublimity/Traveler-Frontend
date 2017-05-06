@@ -7,6 +7,7 @@ import store from './store';
 import App from './components/App';
 import UserCreate from './components/UserCreate';
 import TripCreate from './components/TripCreate';
+import MemoryCreate from './components/MemoryCreate';
 import './css/index.css';
 
 const routes = (
@@ -19,6 +20,7 @@ const routes = (
 			<Route exact path="/" component={App} />
 			<Route path="/new-user" component={UserCreate} />
 			<Route path="/new-trip" component={TripCreate} />
+			<Route path="/new-memory" component={MemoryCreate} />
 		</div>
 	</Router>
 );

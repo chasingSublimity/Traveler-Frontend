@@ -34,6 +34,22 @@ export const submitTripCreateFormSuccess = value =>({
 	value
 });
 
+// send trip creation post request to API
+export const submitMemoryCreateForm = (memoryData) => (dispatch) => {
+	const url = 'https://still-coast-98142.herokuapp.com/memories';
+	return axios.post(url, memoryData)
+		.then(response => {
+		console.log(response);
+	});
+};
+
+// fired after trip is successfully created
+export const SUBMIT_MEMORY_CREATE_FORM_SUCCESS = 'SUBMIT_MEMORY_CREATE_FORM_SUCCESS';
+export const submitMemoryCreateFormSuccess = value =>({
+	type: SUBMIT_MEMORY_CREATE_FORM_SUCCESS,
+	value
+});
+
 // I'll save these and refactor for form submissions later
 
 // export const submitGroup = (groupName, groupId) => (dispatch, getState) => {
