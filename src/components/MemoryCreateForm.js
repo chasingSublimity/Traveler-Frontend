@@ -11,10 +11,10 @@ class MemoryCreateForm extends Component {
 			<form onSubmit={handleSubmit} className="MemoryCreateForm-form" action="" method="post">
 				<label htmlFor="tripId">tripId:</label>
 				<Field component="input" className="MemoryCreateForm-input" id="tripId" type="text" name="tripId"/>			
-				<label htmlFor="imgUrl">imgUrl:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="imgUrl" type="text" name="imgUrl"/>
+				<label htmlFor="image">Image:</label>
+				<Field component="input" className="MemoryCreateForm-input" id="image" type="file" name="image"/>
 				<label htmlFor="location">Location:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="location" type="text" name="location"/>
+				<Field component="input" className="MemoryCreateForm-input" id="location" type="text" accept="image/*" capture="camera"name="location"/>
 				<label htmlFor="date">Date:</label>
 				<Field component="input" className="MemoryCreateForm-input" id="date" type="text" name="date"/>
 				<label htmlFor="comments">Comments:</label>
