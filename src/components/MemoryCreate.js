@@ -18,7 +18,7 @@ class MemoryCreate extends Component {
 		return (
 			<div className="MemoryCreate">
 				<p>Look at this fancy-ass form!</p>
-				<MemoryCreateForm onSubmit={this.handleSubmit}/>
+				<MemoryCreateForm onSubmit={this.handleSubmit} />
 			</div>
 		);
 	}

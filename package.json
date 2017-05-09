@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.15.3",
+    "fine-uploader": "^5.14.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-fine-uploader": "^1.0.0",
     "react-redux": "^4.4.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
