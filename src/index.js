@@ -8,6 +8,7 @@ import App from './components/App';
 import UserCreate from './components/UserCreate';
 import TripCreate from './components/TripCreate';
 import MemoryCreate from './components/MemoryCreate';
+import ImageForm from './components/ImageForm';
 import './css/index.css';
 
 const routes = (
@@ -22,6 +23,7 @@ const routes = (
 			<Route path="/new-user" component={UserCreate} />
 			<Route path="/new-trip" component={TripCreate} />
 			<Route path="/new-memory" component={MemoryCreate} />
+			<Route path="/test-image" component={ImageForm} />
 
 			<div className="links">
 				<ul>
@@ -29,6 +31,7 @@ const routes = (
 					<li><Link to="/new-user">New User</Link></li>
 					<li><Link to="/new-trip">New Trip</Link></li>
 					<li><Link to="/new-memory">New Memory</Link></li>
+					<li><Link to="/test-image">Test Image</Link></li>
 				</ul>
 				
 			</div>
