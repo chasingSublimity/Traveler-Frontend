@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
+import uploadImageToS3 from '../helperFunctions';
 
 import * as actions from '../actions/index';
 
@@ -12,21 +12,12 @@ class ImageForm extends Component {
 		this.handleDrop = this.handleDrop.bind(this);
 	}
 
+	// uploads the img to s3 via helper function
+	// and adds the img url to the state (which is later sent to the database)
 	handleDrop(files) {
-		const file = files[0];
-		axios.get(`http://localhost:8080/awsUrl?filename=${file.name}&filetype=${file.type}`)
-		.then(result => {
-			console.log(result);
-			const signedUrl = result.data.signedUrl;
-			const options = {
-				headers: {
-					'Content-Type': file.type
-				}
-			};
-			return axios.put(signedUrl, file, options);
-		})
+		uploadImageToS3(files)
 		.then(returnData => {
-			console.log(returnData.config.url);
+			// fire action which adds url to state
 			this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
 		})
 		.catch(err => {
@@ -44,10 +35,6 @@ class ImageForm extends Component {
 		); 
 	}
 }
-
-// ImageForm = reduxForm({
-// 	form: 'memoryCreate'
-// })(ImageForm);
 
 const mapStateToProps = (state, props) => ({
 	newMemoryImageUrl: state.newMemoryImageUrl,
