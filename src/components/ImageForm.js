@@ -8,7 +8,6 @@ class ImageForm extends Component {
 
 	handleDrop(files) {
 		const file = files[0];
-		console.log(typeof file.name,typeof file.type);
 		axios.get(`http://localhost:8080/awsUrl?filename=${file.name}&filetype=${file.type}`)
 		.then(result => {
 			console.log(result);
