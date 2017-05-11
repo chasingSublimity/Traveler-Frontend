@@ -7,7 +7,7 @@ export const submitUserCreateForm = (userData) => (dispatch) => {
 	return axios.post(url, userData)
 		.then(response => {
 		console.log(response);
-	});
+		});
 };
 
 // fired after user is successfully created
@@ -24,7 +24,7 @@ export const submitTripCreateForm = (tripData) => (dispatch) => {
 	return axios.post(url, tripData)
 		.then(response => {
 		console.log(response);
-	});
+		});
 };
 
 // fired after trip is successfully created
@@ -40,13 +40,19 @@ export const submitMemoryCreateForm = (memoryData) => (dispatch) => {
 	return axios.post(url, memoryData)
 		.then(response => {
 		console.log(response);
-	});
+		});
 };
 
 // fired after trip is successfully created
 export const SUBMIT_MEMORY_CREATE_FORM_SUCCESS = 'SUBMIT_MEMORY_CREATE_FORM_SUCCESS';
 export const submitMemoryCreateFormSuccess = value =>({
 	type: SUBMIT_MEMORY_CREATE_FORM_SUCCESS,
+	value
+});
+
+export const SUBMIT_IMG_URL_SUCCESS = 'SUBMIT_IMG_URL_SUCCESS';
+export const submitImgUrlSuccess = value => ({
+	type: SUBMIT_IMG_URL_SUCCESS,
 	value
 });
 

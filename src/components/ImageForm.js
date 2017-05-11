@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
-import '../css/MemoryCreateForm.css';
+
+import * as actions from '../actions/index';
 
 
 class ImageForm extends Component {
+	constructor(props) {
+		super(props);
+		this.handleDrop = this.handleDrop.bind(this);
+	}
 
 	handleDrop(files) {
 		const file = files[0];
@@ -19,8 +25,9 @@ class ImageForm extends Component {
 			};
 			return axios.put(signedUrl, file, options);
 		})
-		.then(result => {
-			console.log(result);
+		.then(returnData => {
+			console.log(returnData.config.url);
+			this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
 		})
 		.catch(err => {
 			console.log(err);
@@ -42,4 +49,8 @@ class ImageForm extends Component {
 // 	form: 'memoryCreate'
 // })(ImageForm);
 
-export default ImageForm;
+const mapStateToProps = (state, props) => ({
+	newMemoryImageUrl: state.newMemoryImageUrl,
+});
+
+export default  connect(mapStateToProps)(ImageForm);
