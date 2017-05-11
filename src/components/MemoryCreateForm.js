@@ -11,9 +11,6 @@ class MemoryCreateForm extends Component {
 				<label htmlFor="tripId">tripId:</label>
 				<Field component="input" className="MemoryCreateForm-input" id="tripId" type="text" name="tripId"/>
 
-				<label htmlFor="image">Image:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="image" type="file" accept="image/*" capture="camera" name="image"/>
-
 				<label htmlFor="location">Location:</label>
 				<Field component="input" className="MemoryCreateForm-input" id="location" type="text" name="location"/>
 

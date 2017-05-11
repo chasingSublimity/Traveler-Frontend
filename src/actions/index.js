@@ -20,10 +20,10 @@ export const submitUserCreateFormSuccess = value =>({
 
 // send trip creation post request to API
 export const submitTripCreateForm = (tripData) => (dispatch) => {
-	const url = 'https://still-coast-98142.herokuapp.com/trips';
-	return axios.post(url, tripData)
+	const serverUrl = 'https://still-coast-98142.herokuapp.com/trips';
+	return axios.post(serverUrl, tripData)
 		.then(response => {
-		console.log(response);
+			console.log(response);
 		});
 };
 
@@ -35,9 +35,12 @@ export const submitTripCreateFormSuccess = value =>({
 });
 
 // send trip creation post request to API
-export const submitMemoryCreateForm = (memoryData) => (dispatch) => {
-	const url = 'https://still-coast-98142.herokuapp.com/memories';
-	return axios.post(url, memoryData)
+export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
+	const serverUrl = 'https://still-coast-98142.herokuapp.com/memories';
+	// add imgUrl to memoryData
+	memoryData.imgUrl = newMemoryImageUrl;
+	console.log(memoryData);
+	return axios.post(serverUrl, memoryData)
 		.then(response => {
 		console.log(response);
 		});

@@ -3,8 +3,7 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
-	newMemoryImageUrl: '',
-	newMemoryData: ''
+	newMemoryImageUrl: ''
 };
 
 
@@ -18,10 +17,10 @@ const mainReducer = (state=initialState, action) => {
 		return newState;
 
 	default:
-	
+		return state;
 	}
 
-	return state;
+	// return state;
 };
 
 const reducers = {
