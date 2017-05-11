@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
-
+// import * as actions from '../actions/index';
+import '../css/LoginForm.css';
 
 class LoginForm extends Component {
 

@@ -19,8 +19,6 @@ const mainReducer = (state=initialState, action) => {
 	default:
 		return state;
 	}
-
-	// return state;
 };
 
 const reducers = {
