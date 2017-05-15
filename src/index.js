@@ -32,6 +32,7 @@ const routes = (
 					<li><Link to="/new-trip">New Trip</Link></li>
 					<li><Link to="/new-memory">New Memory</Link></li>
 					<li><Link to="/login">Login</Link></li>
+					<li><Link to="/trips">Trips</Link></li>
 				</ul>
 				
 			</div>
