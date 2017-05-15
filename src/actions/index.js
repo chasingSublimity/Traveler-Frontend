@@ -19,8 +19,10 @@ export const submitUserCreateFormSuccess = value =>({
 
 
 // send trip creation post request to API
-export const submitTripCreateForm = tripData => dispatch => {
+export const submitTripCreateForm = tripData => (dispatch, getState) => {
 	const serverUrl = 'http://localhost:8080/trips';
+	const {userName} = (getState()).main;
+	tripData.userName = userName;
 	return axios.post(serverUrl, tripData)
 		.then(response => {
 			console.log(response);

@@ -18,7 +18,6 @@ const mainReducer = (state=initialState, action) => {
 		return newState;
 
 	case actions.ATTEMPT_LOGIN_SUCCESS:
-		console.log(action.value);
 		newState = Object.assign({}, state, {userName: action.value});
 		return newState;
 

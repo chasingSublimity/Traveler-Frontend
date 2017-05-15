@@ -17,8 +17,6 @@ class TripCreateForm extends Component {
 				<Field component="input" className="TripCreateForm-input" id="beginDate" type="text" name="beginDate"/>
 				<label htmlFor="endDate">End Date:</label>
 				<Field component="input" className="TripCreateForm-input" id="endDate" type="text" name="endDate"/>
-				<label htmlFor="userId">UserId:</label>
-				<Field component="input" className="TripCreateForm-input" id="userId" type="text" name="userId"/>				
 				<input type="submit" value="Submit"/>
 			</form>
 		); 
