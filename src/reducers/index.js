@@ -3,7 +3,8 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
-	newMemoryImageUrl: ''
+	newMemoryImageUrl: '',
+	userName: ''
 };
 
 
@@ -14,6 +15,11 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.SUBMIT_IMG_URL_SUCCESS:
 		newState = Object.assign({}, state, {newMemoryImageUrl: action.value});
+		return newState;
+
+	case actions.ATTEMPT_LOGIN_SUCCESS:
+		console.log(action.value);
+		newState = Object.assign({}, state, {userName: action.value});
 		return newState;
 
 	default:

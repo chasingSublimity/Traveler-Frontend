@@ -2,8 +2,8 @@ import axios from 'axios';
 
 
 // send user creation post request to API
-export const submitUserCreateForm = (userData) => (dispatch) => {
-	const url = 'https://still-coast-98142.herokuapp.com/users';
+export const submitUserCreateForm = userData => dispatch => {
+	const url = 'http://localhost:8080/users';
 	return axios.post(url, userData)
 		.then(response => {
 		console.log(response);
@@ -19,8 +19,8 @@ export const submitUserCreateFormSuccess = value =>({
 
 
 // send trip creation post request to API
-export const submitTripCreateForm = (tripData) => (dispatch) => {
-	const serverUrl = 'https://still-coast-98142.herokuapp.com/trips';
+export const submitTripCreateForm = tripData => dispatch => {
+	const serverUrl = 'http://localhost:8080/trips';
 	return axios.post(serverUrl, tripData)
 		.then(response => {
 			console.log(response);
@@ -36,7 +36,7 @@ export const submitTripCreateFormSuccess = value =>({
 
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
-	const serverUrl = 'https://still-coast-98142.herokuapp.com/memories';
+	const serverUrl = 'http://localhost:8080/memories';
 	// add imgUrl to memoryData
 	memoryData.imgUrl = newMemoryImageUrl;
 	console.log(memoryData);
@@ -58,6 +58,25 @@ export const submitImgUrlSuccess = value => ({
 	type: SUBMIT_IMG_URL_SUCCESS,
 	value
 });
+
+export const ATTEMPT_LOGIN_SUCCESS = 'ATTEMPT_LOGIN_SUCCESS';
+export const attemptLoginSuccess = value => ({
+	type: ATTEMPT_LOGIN_SUCCESS,
+	value
+});
+
+export const attemptLogin = authData => (dispatch, getState) => {
+	const url = 'http://localhost:8080/login';
+	// submit user login data to server
+	return axios.post(url, authData)
+		.then(response => {
+			const {userName} = (JSON.parse(response.config.data));
+			dispatch(attemptLoginSuccess(userName));
+		}).catch(err => {
+			console.log(err);
+		});
+};
+
 
 // I'll save these and refactor for form submissions later
 
