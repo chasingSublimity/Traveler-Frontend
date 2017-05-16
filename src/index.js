@@ -9,6 +9,7 @@ import UserCreate from './components/UserCreate';
 import TripCreate from './components/TripCreate';
 import MemoryCreate from './components/MemoryCreate';
 import LoginScreen from './components/LoginScreen';
+import TripView from './components/TripView';
 import './css/index.css';
 
 const routes = (
@@ -24,6 +25,7 @@ const routes = (
 			<Route path="/new-trip" component={TripCreate} />
 			<Route path="/new-memory" component={MemoryCreate} />
 			<Route path="/login" component={LoginScreen} />
+			<Route path="/trips" component={TripView} />
 
 			<div className="links">
 				<ul>
