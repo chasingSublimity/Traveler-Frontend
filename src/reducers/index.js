@@ -4,7 +4,8 @@ import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
 	newMemoryImageUrl: '',
-	userName: ''
+	userName: '',
+	trips: []
 };
 
 
@@ -19,6 +20,10 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.ATTEMPT_LOGIN_SUCCESS:
 		newState = Object.assign({}, state, {userName: action.value});
+		return newState;
+
+	case actions.LOAD_TRIP_VIEW_PAGE_SUCCESS:
+		newState = Object.assign({}, state, {trips: action.value});
 		return newState;
 
 	default:

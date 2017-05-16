@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 // send user creation post request to API
 export const submitUserCreateForm = userData => dispatch => {
 	const url = 'http://localhost:8080/users';
@@ -31,10 +30,26 @@ export const submitTripCreateForm = tripData => (dispatch, getState) => {
 
 // fired after trip is successfully created
 export const SUBMIT_TRIP_CREATE_FORM_SUCCESS = 'SUBMIT_TRIP_CREATE_FORM_SUCCESS';
-export const submitTripCreateFormSuccess = value =>({
+export const submitTripCreateFormSuccess = value => ({
 	type: SUBMIT_TRIP_CREATE_FORM_SUCCESS,
 	value
 });
+
+export const LOAD_TRIP_VIEW_PAGE_SUCCESS = 'LOAD_TRIP_VIEW_PAGE_SUCCESS';
+export const loadTripViewPageSuccess = value => ({
+	type: LOAD_TRIP_VIEW_PAGE_SUCCESS,
+	value
+});
+
+export const loadTripViewPage = userName => (dispatch, getState) => {
+	console.log('userName: ', userName);
+	const serverUrl = `http://localhost:8080/trips?userName=${userName}`;
+	return axios.get(serverUrl)
+		.then(response => {
+			console.log('success');
+			dispatch(loadTripViewPageSuccess(response.data.trips));
+		});
+};
 
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
@@ -61,6 +76,8 @@ export const submitImgUrlSuccess = value => ({
 	value
 });
 
+
+// trigger redirect here
 export const ATTEMPT_LOGIN_SUCCESS = 'ATTEMPT_LOGIN_SUCCESS';
 export const attemptLoginSuccess = value => ({
 	type: ATTEMPT_LOGIN_SUCCESS,
