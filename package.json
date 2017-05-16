@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.15.3",
+    "moment-timezone": "^0.5.13",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "^15.5.4",
