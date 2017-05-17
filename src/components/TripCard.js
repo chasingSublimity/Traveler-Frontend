@@ -11,8 +11,8 @@ class TripCard extends Component {
 				<div className="TripCard-description">
 					<p className="TripCard-origin">Origin: {this.props.origin}</p>
 					<p className="TripCard-destination">Destination: {this.props.destination}</p>
-					<p className="TripCard-beginDate">Begin Date: {this.props.beginDate}</p>
-					<p className="TripCard-endDate">End Date: {this.props.endDate}</p>
+					<p className="TripCard-beginDate">Begin: {this.props.beginDate}</p>
+					<p className="TripCard-endDate">End: {this.props.endDate}</p>
 				</div>
 			</div>
 		); 

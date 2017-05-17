@@ -1,5 +1,10 @@
 .TripCard {
 	border: black 3px solid;
-	max-width: 200px;
-	margin: auto;
+	min-width: 205px;
+	margin: 0 5px 0 5px;
+	display: inline-block;
+}
+
+.TripCard-description {
+	padding: 0 5px 0 5px;
 }

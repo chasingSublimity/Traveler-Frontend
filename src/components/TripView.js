@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import moment from 'moment-timezone';
 import * as actions from '../actions/index';
 import TripCard from './TripCard';
-// import '../css/TripView.css';
+import '../css/TripView.css';
 
-class TripCreate extends Component {
+class TripView extends Component {
 	// constructor(props) {
 	// 	super(props);
 	// }
@@ -16,8 +16,6 @@ class TripCreate extends Component {
 	}
 
 	render() {
-		// guess timezone for use in date conversion
-		// const timezone = moment.tz.guess();
 		// map trips in store to array in props
 		// and then render array as trip cards
 		let trips = this.props.trips.map((trip, index) => {
@@ -31,6 +29,7 @@ class TripCreate extends Component {
 																	endDate={endDate}
 																	/>;
 		});
+
 		return (
 			<div className="TripView">
 				<p>Look at this fancy-ass display!</p>
@@ -45,4 +44,4 @@ const mapStateToProps = (state, props) => ({
 	trips: state.main.trips
 });
 
-export default connect(mapStateToProps)(TripCreate);
+export default connect(mapStateToProps)(TripView);
