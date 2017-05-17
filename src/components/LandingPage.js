@@ -1,23 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import * as actions from '../actions/index';
-import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
-
-
-class LandingPage extends Component {
-
-	componentDidMount() {
-		const userNameInCookie = cookies.get('userName');
-		if (!userNameInCookie) {
-			// redirect
-			console.log('redirect here');
-		} else {
-			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
-		}
-	}
-
+export default class LandingPage extends Component {
 	render() {
 		return (
 			<div>
@@ -26,5 +9,3 @@ class LandingPage extends Component {
 		);
 	}
 }
-
-export default connect()(LandingPage);
