@@ -1,4 +1,7 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 // send user creation post request to API
 export const submitUserCreateForm = userData => dispatch => {
@@ -42,11 +45,13 @@ export const loadTripViewPageSuccess = value => ({
 });
 
 export const loadTripViewPage = userName => (dispatch, getState) => {
-	console.log('userName: ', userName);
 	const serverUrl = `http://localhost:8080/trips?userName=${userName}`;
 	return axios.get(serverUrl)
 		.then(response => {
-			console.log('success');
+			console.log('log in success');
+			// set cookie to userName data
+			// this will be used to create a persistant log-in
+			cookies.set('userName', userName, {path: '/'});
 			dispatch(loadTripViewPageSuccess(response.data.trips));
 		});
 };
