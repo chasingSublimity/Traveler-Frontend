@@ -15,20 +15,16 @@ class App extends Component {
 		const userNameInCookie = cookies.get('userName');
 		if (userNameInCookie) {
 			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
-			console.log('cookie set in store');
 		}
 	}
-
+	
 	render() {
 		return (
 			<div>
-
 				<div className="header">
 					<h2 className="header-title">Traveler</h2>
 				</div>
-
 				{this.props.children}
-					
 			</div>
 		);
 	}
