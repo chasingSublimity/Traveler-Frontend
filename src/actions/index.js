@@ -3,6 +3,13 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
+// fired after user is successfully created
+export const SUBMIT_USER_CREATE_FORM_SUCCESS = 'SUBMIT_USER_CREATE_FORM_SUCCESS';
+export const submitUserCreateFormSuccess = value =>({
+	type: SUBMIT_USER_CREATE_FORM_SUCCESS,
+	value
+});
+
 // send user creation post request to API
 export const submitUserCreateForm = userData => dispatch => {
 	const url = 'http://localhost:8080/users';
@@ -12,13 +19,12 @@ export const submitUserCreateForm = userData => dispatch => {
 		});
 };
 
-// fired after user is successfully created
-export const SUBMIT_USER_CREATE_FORM_SUCCESS = 'SUBMIT_USER_CREATE_FORM_SUCCESS';
-export const submitUserCreateFormSuccess = value =>({
-	type: SUBMIT_USER_CREATE_FORM_SUCCESS,
+// fired after trip is successfully created
+export const SUBMIT_TRIP_CREATE_FORM_SUCCESS = 'SUBMIT_TRIP_CREATE_FORM_SUCCESS';
+export const submitTripCreateFormSuccess = value => ({
+	type: SUBMIT_TRIP_CREATE_FORM_SUCCESS,
 	value
 });
-
 
 // send trip creation post request to API
 export const submitTripCreateForm = tripData => (dispatch, getState) => {
@@ -30,13 +36,6 @@ export const submitTripCreateForm = tripData => (dispatch, getState) => {
 			console.log(response);
 		});
 };
-
-// fired after trip is successfully created
-export const SUBMIT_TRIP_CREATE_FORM_SUCCESS = 'SUBMIT_TRIP_CREATE_FORM_SUCCESS';
-export const submitTripCreateFormSuccess = value => ({
-	type: SUBMIT_TRIP_CREATE_FORM_SUCCESS,
-	value
-});
 
 export const LOAD_TRIP_VIEW_PAGE_SUCCESS = 'LOAD_TRIP_VIEW_PAGE_SUCCESS';
 export const loadTripViewPageSuccess = value => ({
@@ -52,6 +51,13 @@ export const loadTripViewPage = userName => (dispatch, getState) => {
 		});
 };
 
+// fired after trip is successfully created
+export const SUBMIT_MEMORY_CREATE_FORM_SUCCESS = 'SUBMIT_MEMORY_CREATE_FORM_SUCCESS';
+export const submitMemoryCreateFormSuccess = value =>({
+	type: SUBMIT_MEMORY_CREATE_FORM_SUCCESS,
+	value
+});
+
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
 	const serverUrl = 'http://localhost:8080/memories';
@@ -64,19 +70,11 @@ export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispat
 		});
 };
 
-// fired after trip is successfully created
-export const SUBMIT_MEMORY_CREATE_FORM_SUCCESS = 'SUBMIT_MEMORY_CREATE_FORM_SUCCESS';
-export const submitMemoryCreateFormSuccess = value =>({
-	type: SUBMIT_MEMORY_CREATE_FORM_SUCCESS,
-	value
-});
-
 export const SUBMIT_IMG_URL_SUCCESS = 'SUBMIT_IMG_URL_SUCCESS';
 export const submitImgUrlSuccess = value => ({
 	type: SUBMIT_IMG_URL_SUCCESS,
 	value
 });
-
 
 // trigger redirect here
 export const ATTEMPT_LOGIN_SUCCESS = 'ATTEMPT_LOGIN_SUCCESS';
@@ -93,6 +91,7 @@ export const attemptLogin = authData => (dispatch, getState) => {
 			const {userName} = (JSON.parse(response.config.data));
 			// set cookie to userName data
 			// this will be used to create a persistant log-in
+			// and for redirects
 			cookies.set('userName', userName, {path: '/'});
 			dispatch(attemptLoginSuccess(userName));
 		}).catch(err => {
