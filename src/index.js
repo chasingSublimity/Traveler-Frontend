@@ -19,6 +19,8 @@ import TripView from './components/TripView';
 const cookies = new Cookies();
 // returns a boolean based on whether or not a cookie is set.
 // This boolean is then used to determine redirects in the router below
+
+// is it better just to check the store here?
 const loggedIn = isUserLoggedIn(cookies.get('userName'));
 
 const routes = (
