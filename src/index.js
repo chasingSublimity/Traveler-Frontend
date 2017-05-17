@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import store from './store';
+import App from './components/App';
 import LandingPage from './components/LandingPage';
 import UserCreate from './components/UserCreate';
 import TripCreate from './components/TripCreate';
@@ -14,12 +15,8 @@ import './css/index.css';
 
 const routes = (
 	<Router>
+
 		<div>
-			<div className="header">
-				<h2 className="header-title">Traveler</h2>
-			</div>
-
-
 			<Route exact path="/" component={LandingPage} />
 			<Route path="/new-user" component={UserCreate} />
 			<Route path="/new-trip" component={TripCreate} />
@@ -36,9 +33,7 @@ const routes = (
 					<li><Link to="/login">Login</Link></li>
 					<li><Link to="/trips">Trips</Link></li>
 				</ul>
-				
 			</div>
-			
 		</div>
 
 	</Router>
@@ -47,7 +42,9 @@ const routes = (
 
 ReactDOM.render(
 	<Provider store={store}>
-		{routes}
+		<App>
+			{routes}
+		</App>
   </Provider>,
   document.getElementById('root')
 );
