@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 
-class App extends Component {
+class LandingPage extends Component {
 
 	componentDidMount() {
 		const userNameInCookie = cookies.get('userName');
@@ -27,4 +27,4 @@ class App extends Component {
 	}
 }
 
-export default connect()(App);
+export default connect()(LandingPage);

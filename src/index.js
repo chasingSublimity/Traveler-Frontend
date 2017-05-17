@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import store from './store';
-import App from './components/App';
+import LandingPage from './components/LandingPage';
 import UserCreate from './components/UserCreate';
 import TripCreate from './components/TripCreate';
 import MemoryCreate from './components/MemoryCreate';
@@ -20,7 +20,7 @@ const routes = (
 			</div>
 
 
-			<Route exact path="/" component={App} />
+			<Route exact path="/" component={LandingPage} />
 			<Route path="/new-user" component={UserCreate} />
 			<Route path="/new-trip" component={TripCreate} />
 			<Route path="/new-memory" component={MemoryCreate} />
