@@ -29,27 +29,18 @@ const routes = (
 			<Route path="/login" component={LoginScreen} />
 			<Route path="/new-user" component={UserCreate} />
 			<Route path="/new-trip" render={() => (
-															loggedIn ? (
-																	<TripCreate />
-																) : (
-																	<Redirect to="/login"/>
-																)
+															loggedIn ? (<TripCreate />) : 
+																				(<Redirect to="/login"/>)
 															)} />
 
 			<Route path="/new-memory"render={() => (
-															loggedIn ? (
-																	<MemoryCreate />
-																) : (
-																	<Redirect to="/login"/>
-																)
+															loggedIn ? (<MemoryCreate />) : 
+																				(<Redirect to="/login"/>)
 															)} />
 
 			<Route path="/trips" render={() => (
-															loggedIn ? (
-																	<TripView />
-																) : (
-																	<Redirect to="/login"/>
-																)
+															loggedIn ? (<TripView />) : 
+																				(<Redirect to="/login"/>)
 															)} />
 
 			<div className="links">
