@@ -1,12 +1,30 @@
-import React from 'react';
-// import * as actions from '../actions/index';
-// import UserCreateForm from './UserCreateForm';
-import '../css/UserCreate.css';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
+import Cookies from 'universal-cookie';
 
-export default function App(props) {
-	return (
-		<div>
-			<p>Look at this fancy-ass landing page!</p>
-		</div>
-	);
+const cookies = new Cookies();
+
+
+class App extends Component {
+
+	componentDidMount() {
+		const userNameInCookie = cookies.get('userName');
+		if (!userNameInCookie) {
+			// redirect
+			console.log('redirect here');
+		} else {
+			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
+		}
+	}
+
+	render() {
+		return (
+			<div>
+				<p>Look at this fancy-ass landing page!</p>
+			</div>
+		);
+	}
 }
+
+export default connect()(App);

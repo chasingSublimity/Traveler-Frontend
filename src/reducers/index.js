@@ -26,6 +26,10 @@ const mainReducer = (state=initialState, action) => {
 		newState = Object.assign({}, state, {trips: action.value});
 		return newState;
 
+	case actions.SET_USERNAME_FROM_COOKIE:
+		newState = Object.assign({}, state, {userName: action.value});
+		return newState;
+
 	default:
 		return state;
 	}

@@ -93,34 +93,15 @@ export const attemptLogin = authData => (dispatch, getState) => {
 			const {userName} = (JSON.parse(response.config.data));
 			// set cookie to userName data
 			// this will be used to create a persistant log-in
-			console.log('userName cookie before cookies.set: ', cookies.get('userName'));
 			cookies.set('userName', userName, {path: '/'});
-			console.log('userName cookie after cookies.set: ', cookies.get('userName'));
 			dispatch(attemptLoginSuccess(userName));
 		}).catch(err => {
 			console.log(err);
 		});
 };
 
-
-// I'll save these and refactor for form submissions later
-
-// export const submitGroup = (groupName, groupId) => (dispatch, getState) => {
-// 	const {apiKey} = getState();
-// 	const {spinnerStopped} = getState();
-// 	return getMessages(groupId, apiKey).then(messages => {
-// 		const userSwearCount = swearCounter(messages);
-// 																																								// return toggled boolean
-// 		return dispatch(submitGroupChoiceSuccess(groupName, groupId, userSwearCount, !spinnerStopped));
-// 	});
-// };
-
-// select group
-// export const SUBMIT_GROUP_CHOICE_FORM_SUCCESS = 'SUBMIT_GROUP_CHOICE_FORM_SUCCESS';
-// export const submitGroupChoiceSuccess = (groupName, groupId, userSwearCount, spinnerStopped) => ({
-// 	type: SUBMIT_GROUP_CHOICE_FORM_SUCCESS, 
-// 	groupName,
-// 	groupId,
-// 	userSwearCount,
-// 	spinnerStopped
-// });
+export const SET_USERNAME_FROM_COOKIE = 'SET_USERNAME_FROM_COOKIE';
+export const setUserNameFromCookie = value => ({
+	type: SET_USERNAME_FROM_COOKIE,
+	value
+});
