@@ -48,10 +48,6 @@ export const loadTripViewPage = userName => (dispatch, getState) => {
 	const serverUrl = `http://localhost:8080/trips?userName=${userName}`;
 	return axios.get(serverUrl)
 		.then(response => {
-			console.log('log in success');
-			// set cookie to userName data
-			// this will be used to create a persistant log-in
-			cookies.set('userName', userName, {path: '/'});
 			dispatch(loadTripViewPageSuccess(response.data.trips));
 		});
 };
@@ -95,6 +91,11 @@ export const attemptLogin = authData => (dispatch, getState) => {
 	return axios.post(url, authData)
 		.then(response => {
 			const {userName} = (JSON.parse(response.config.data));
+			// set cookie to userName data
+			// this will be used to create a persistant log-in
+			console.log('userName cookie before cookies.set: ', cookies.get('userName'));
+			cookies.set('userName', userName, {path: '/'});
+			console.log('userName cookie after cookies.set: ', cookies.get('userName'));
 			dispatch(attemptLoginSuccess(userName));
 		}).catch(err => {
 			console.log(err);
