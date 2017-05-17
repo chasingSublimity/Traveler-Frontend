@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
-import uploadImageToS3 from '../helperFunctions';
+import uploadImageToS3 from '../helperFunctions/uploadImageToS3';
 
 import * as actions from '../actions/index';
 
