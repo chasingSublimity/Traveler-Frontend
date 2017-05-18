@@ -6,7 +6,9 @@ const initialState = {
 	newMemoryImageUrl: '',
 	userName: '',
 	trips: [],
-	selectedTripId: ''
+	selectedTripId: '',
+	memories: [],
+	selectedMemoryId: ''
 };
 
 
@@ -29,6 +31,10 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.SET_USERNAME_FROM_COOKIE:
 		newState = Object.assign({}, state, {userName: action.value});
+		return newState;
+
+	case actions.SELECT_TRIP_SUCCESS:
+		newState = Object.assign({}, state, {selectedTripId: action.values.tripId}, {memories: action.values.memories});
 		return newState;
 
 	default:

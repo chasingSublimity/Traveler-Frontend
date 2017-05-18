@@ -105,11 +105,21 @@ export const setUserNameFromCookie = value => ({
 	value
 });
 
+export const SELECT_TRIP_SUCCESS = 'SELECT_TRIP_SUCCESS';
+export const selectTripSuccess = values => ({
+	type: SELECT_TRIP_SUCCESS,
+	values
+});
+
 export const selectTrip = tripId => (dispatch) => {
 	console.log('select trip fired with id: ', tripId);
 	const url = `http://localhost:8080/trips/${tripId}`;
 	return axios.get(url)
 		.then(response => {
-			console.log('responseData: ', response);
+			console.log(response.data);
+			const tripId = response.data.tripData.id;
+			const memories = response.data.memories;
+			// store array of memories in store and set selectedTrip id in store
+			dispatch(selectTripSuccess({tripId, memories}));
 		});
 };
