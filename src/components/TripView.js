@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment-timezone';
+import Cookies from 'universal-cookie';
+
 import * as actions from '../actions/index';
 import TripCard from './TripCard';
 import '../css/TripView.css';
+
+const cookies = new Cookies();
 
 class TripView extends Component {
 
 	// weird async bug here has to do with speed. Ask about it
 	componentDidMount() {
 		// dispatch action that makes post request to /trips
-		this.props.dispatch(actions.loadTripViewPage(this.props.userName));
+		const userNameInCookie = cookies.get('userName');
+		this.props.dispatch(actions.loadTripViewPage(userNameInCookie));
 	}
 
 	render() {
