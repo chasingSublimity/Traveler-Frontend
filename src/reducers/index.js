@@ -5,7 +5,8 @@ import {reducer as formReducer} from 'redux-form';
 const initialState = {
 	newMemoryImageUrl: '',
 	userName: '',
-	trips: []
+	trips: [],
+	selectedTripId: ''
 };
 
 
