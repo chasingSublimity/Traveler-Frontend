@@ -106,5 +106,10 @@ export const setUserNameFromCookie = value => ({
 });
 
 export const selectTrip = tripId => (dispatch) => {
-	console.log(tripId);
+	console.log('select trip fired with id: ', tripId);
+	const url = `http://localhost:8080/trips/${tripId}`;
+	return axios.get(url)
+		.then(response => {
+			console.log('responseData: ', response);
+		});
 };
