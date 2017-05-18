@@ -6,22 +6,11 @@ import TripCard from './TripCard';
 import '../css/TripView.css';
 
 class TripView extends Component {
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-	}
 
 	// weird async bug here has to do with speed. Ask about it
 	componentDidMount() {
 		// dispatch action that makes post request to /trips
 		this.props.dispatch(actions.loadTripViewPage(this.props.userName));
-	}
-
-	handleClick() {
-		console.log('clicked')
-		console.log(this.props.userName);
-
-		// fire prop to store trip id in
 	}
 
 	render() {
@@ -32,14 +21,12 @@ class TripView extends Component {
 			const beginDate = moment(trip.beginDate).format('MMMM Do YYYY');
 			const endDate = moment(trip.endDate).format('MMMM Do YYYY');
 
-			return <a onClick={this.handleClick} href="#" key={index}>
-							<TripCard dataId={trip.id} 
+			return <TripCard key={index} id={trip.id} 
 																	origin={trip.origin} 
 																	destination={trip.destination}
 																	beginDate={beginDate}
 																	endDate={endDate}
-																	/>
-							</a>;
+																	/>;
 		});
 
 		return (

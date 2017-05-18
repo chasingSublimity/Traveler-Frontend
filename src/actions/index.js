@@ -104,3 +104,7 @@ export const setUserNameFromCookie = value => ({
 	type: SET_USERNAME_FROM_COOKIE,
 	value
 });
+
+export const selectTrip = tripId => (dispatch) => {
+	console.log(tripId);
+};
