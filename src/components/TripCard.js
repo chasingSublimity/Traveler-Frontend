@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import * as actions from '../actions/index';
 import '../css/TripCard.css';
-
 
 class TripCard extends Component {
 	constructor(props) {
@@ -17,7 +17,7 @@ class TripCard extends Component {
 
 	render() {
 		return (
-			<a onClick={this.handleClick} href="#" >
+			<Link to="/map" onClick={this.handleClick} href="#" >
 				<div className="TripCard" id={this.props.id}>
 					<img className="TripCard-image" src={this.props.imgUrl} alt=""/>
 					<div className="TripCard-description">
@@ -27,7 +27,7 @@ class TripCard extends Component {
 						<p className="TripCard-endDate">End: {this.props.endDate}</p>
 					</div>
 				</div>
-			</a>
+			</Link>
 		); 
 	}
 }
