@@ -10,6 +10,7 @@ import TripCreate from './TripCreate';
 import MemoryCreate from './MemoryCreate';
 import LoginScreen from './LoginScreen';
 import TripView from './TripView';
+import TripMap from './TripMap';
 
 const cookies = new Cookies();
 // returns a boolean based on whether or not a cookie is set.
@@ -39,6 +40,8 @@ export const routes = (
 															loggedIn ? (<TripView />) : 
 																				(<Redirect to="/login"/>)
 															)} />
+
+			<Route exact path="/map" component={TripMap} />
 
 			<div className="links">
 				<ul>
