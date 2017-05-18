@@ -20,6 +20,8 @@ class TripView extends Component {
 	handleClick() {
 		console.log('clicked')
 		console.log(this.props.userName);
+
+		// fire prop to store trip id in
 	}
 
 	render() {
@@ -31,7 +33,8 @@ class TripView extends Component {
 			const endDate = moment(trip.endDate).format('MMMM Do YYYY');
 
 			return <a onClick={this.handleClick} href="#" key={index}>
-							<TripCard origin={trip.origin} 
+							<TripCard dataId={trip.id} 
+																	origin={trip.origin} 
 																	destination={trip.destination}
 																	beginDate={beginDate}
 																	endDate={endDate}
