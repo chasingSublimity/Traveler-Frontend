@@ -16,9 +16,8 @@ const cookies = new Cookies();
 // returns a boolean based on whether or not a cookie is set.
 // This boolean is then used to determine redirects in the router below
 
-// is it better just to check the store here?
-const loggedIn = isUserLoggedIn(cookies.get('userName'));
 
+// const loggedIn = isUserLoggedIn(cookies.get('userName'));
 export const routes = (
 	<Router>
 
@@ -27,17 +26,17 @@ export const routes = (
 			<Route exact path="/login" component={LoginScreen} />
 			<Route exact path="/new-user" component={UserCreate} />
 			<Route exact path="/new-trip" render={() => (
-															loggedIn ? (<TripCreate />) : 
+															isUserLoggedIn(cookies.get('userName')) ? (<TripCreate />) : 
 																				(<Redirect to="/login"/>)
 															)} />
 
 			<Route exact path="/new-memory"render={() => (
-															loggedIn ? (<MemoryCreate />) : 
+															isUserLoggedIn(cookies.get('userName')) ? (<MemoryCreate />) : 
 																				(<Redirect to="/login"/>)
 															)} />
 
 			<Route exact path="/trips" render={() => (
-															loggedIn ? (<TripView />) : 
+															isUserLoggedIn(cookies.get('userName')) ? (<TripView />) : 
 																				(<Redirect to="/login"/>)
 															)} />
 
