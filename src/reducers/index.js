@@ -6,9 +6,10 @@ const initialState = {
 	newMemoryImageUrl: '',
 	userName: '',
 	trips: [],
-	selectedTripId: '',
+	selectedTrip: null,
 	memories: [],
-	selectedMemoryId: ''
+	selectedMemory: null,
+	mapZoomLevel: null
 };
 
 
