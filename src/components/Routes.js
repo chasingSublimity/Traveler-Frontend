@@ -13,11 +13,9 @@ import TripView from './TripView';
 import TripMap from './TripMap';
 
 const cookies = new Cookies();
-// returns a boolean based on whether or not a cookie is set.
-// This boolean is then used to determine redirects in the router below
 
-
-// const loggedIn = isUserLoggedIn(cookies.get('userName'));
+// render function in the routes handles auth-based redirection
+// if no data is set in cookie, the user is redirected to the login page
 export const routes = (
 	<Router>
 
