@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.15.3",
+    "immutable": "^3.8.1",
     "moment-timezone": "^0.5.13",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
@@ -11,6 +12,7 @@
     "react-cookie": "^2.0.7",
     "react-dom": "^15.5.4",
     "react-dropzone": "^3.13.1",
+    "react-map-gl": "^2.0.3",
     "react-redux": "^4.4.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
