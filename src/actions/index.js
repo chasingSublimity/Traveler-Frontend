@@ -123,3 +123,9 @@ export const selectTrip = tripId => (dispatch) => {
 			dispatch(selectTripSuccess({tripId, memories}));
 		});
 };
+
+export const SET_ZOOM_LEVEL = 'SET_ZOOM_LEVEL';
+export const setZoomLevel = value => ({
+	type: SET_ZOOM_LEVEL,
+	value
+});

@@ -38,6 +38,10 @@ const mainReducer = (state=initialState, action) => {
 		newState = Object.assign({}, state, {selectedTripId: action.values.tripId}, {memories: action.values.memories});
 		return newState;
 
+	case actions.SET_ZOOM_LEVEL:
+		newState = Object.assign({}, state, {mapZoomLevel: action.value});
+		return newState;
+
 	default:
 		return state;
 	}
