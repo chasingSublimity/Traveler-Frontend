@@ -3,14 +3,20 @@ import {connect} from 'react-redux';
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
+import findMidPoint from '../helperFunctions/findMidPoint';
 import * as actions from '../actions/index';
 import '../css/TripMap.css';
 
 
-const mapCenter = [39.9528, -75.1638];
-const zoomLevel = 12;
+const zoomLevel = 5;
 const position1 = [32.7555, -97.3308];
 const position2 = [42.7555, -97.3308];
+
+// helper functions finds a rough middle point between two coordinates.
+// we use this to set the map center to somewhere inbetween the destination and origin.
+const mapCenter = findMidPoint(...position1, ...position2);
+
+
 
 const stamenTonerTiles = 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png';
 const stamenTonerAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -29,7 +35,9 @@ class TripMap extends Component {
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.on('zoomend', () => {
 			const updatedZoomLevel = leafletMap.getZoom();
+			console.log(updatedZoomLevel);
 			// fire action to set zoom level in redducer
+			this.props.dispatch(actions.setZoomLevel(updatedZoomLevel));
 		});
 	}
 
@@ -81,6 +89,11 @@ class TripMap extends Component {
 							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
 						</Popup>
 					</Marker>
+					<Marker position={position3}>
+						<Popup>
+							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
+						</Popup>
+					</Marker>
 					<Control position="topright" >
 						<div 
 							style={{
@@ -117,7 +130,8 @@ class TripMap extends Component {
 const mapStateToProps = (state, props) => ({
 	selectedTrip: state.main.selectedTrip,
 	memories: state.main.memories,
-	selectedMemory: state.main.selectedMemory
+	selectedMemory: state.main.selectedMemory,
+	mapZoomLevel: state.main.mapZoomLevel
 });
 
 export default connect(mapStateToProps)(TripMap);
