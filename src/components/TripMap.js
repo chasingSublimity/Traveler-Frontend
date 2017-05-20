@@ -69,7 +69,6 @@ class TripMap extends Component {
 	render() {
 		return (
 			<div>
-				<p>Look at this fancy ass map!</p>
 				<Map
 					ref={m => {this.leafletMap = m;}}
 					center={mapCenter}
@@ -85,11 +84,6 @@ class TripMap extends Component {
 						</Popup>
 					</Marker>         
 					<Marker position={position2}>
-						<Popup>
-							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
-						</Popup>
-					</Marker>
-					<Marker position={position3}>
 						<Popup>
 							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
 						</Popup>

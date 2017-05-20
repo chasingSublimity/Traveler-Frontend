@@ -10,7 +10,7 @@ import TripCreate from './TripCreate';
 import MemoryCreate from './MemoryCreate';
 import LoginScreen from './LoginScreen';
 import TripView from './TripView';
-import TripMap from './TripMap';
+import TripMapContainer from './TripMapContainer';
 
 const cookies = new Cookies();
 
@@ -38,7 +38,7 @@ export const routes = (
 																				(<Redirect to="/login"/>)
 															)} />
 
-			<Route exact path="/map" component={TripMap} />
+			<Route exact path="/map" component={TripMapContainer} />
 
 			<div className="links">
 				<ul>
