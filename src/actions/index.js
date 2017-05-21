@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import stripQueryString from '../helperFunctions/stripQueryString';
 
 const cookies = new Cookies();
 
@@ -61,8 +62,8 @@ export const submitMemoryCreateFormSuccess = value =>({
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
 	const serverUrl = 'http://localhost:8080/memories';
-	// add imgUrl to memoryData
-	memoryData.imgUrl = newMemoryImageUrl;
+	// add formatted imgUrl to memoryData
+	memoryData.imgUrl = stripQueryString(newMemoryImageUrl);
 	console.log(memoryData);
 	return axios.post(serverUrl, memoryData)
 		.then(response => {
@@ -84,11 +85,12 @@ export const attemptLoginSuccess = value => ({
 });
 
 export const attemptLogin = authData => (dispatch, getState) => {
-	const url = 'http://localhost:8080/login';
+	const serverUrl = 'http://localhost:8080/login';
 	// submit user login data to server
-	return axios.post(url, authData)
+	return axios.post(serverUrl, authData)
 		.then(response => {
 			const {userName} = (JSON.parse(response.config.data));
+			console.log(response);
 			// set cookie to userName data
 			// this will be used to create a persistant log-in
 			// and for redirects
@@ -113,8 +115,8 @@ export const selectTripSuccess = values => ({
 
 export const selectTrip = tripId => (dispatch) => {
 	console.log('select trip fired with id: ', tripId);
-	const url = `http://localhost:8080/trips/${tripId}`;
-	return axios.get(url)
+	const serverUrl = `http://localhost:8080/trips/${tripId}`;
+	return axios.get(serverUrl)
 		.then(response => {
 			console.log(response.data);
 			const tripId = response.data.tripData.id;
