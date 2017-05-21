@@ -4,9 +4,9 @@ import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
 import findMidPoint from '../helperFunctions/findMidPoint';
+
 import * as actions from '../actions/index';
 import '../css/TripMap.css';
-
 
 const zoomLevel = 5;
 const position1 = [32.7555, -97.3308];
@@ -67,6 +67,21 @@ class TripMap extends Component {
 
 
 	render() {
+		console.log('memories: ', this.props.memories);
+
+		const memoryMarkers = this.props.memories.map((memory, index) => {
+			const location = JSON.parse(memory.location);	
+			return (
+				<Marker key={index} position={location}>
+					<Popup>
+						<div>
+							<img src={memory.imgUrl} alt={'Image comment: ' + memory.comments} />
+							<span>{memory.comments}</span>
+						</div>
+					</Popup>
+				</Marker>
+			);
+		});
 		return (
 			<div>
 				<Map
@@ -78,16 +93,9 @@ class TripMap extends Component {
 						attribution={stamenTonerAttr}
 						url={stamenTonerTiles}
 					/>
-					<Marker position={position1}>
-						<Popup>
-							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
-						</Popup>
-					</Marker>         
-					<Marker position={position2}>
-						<Popup>
-							<span>A pretty CSS3 popup.<br/>Easily Customizable.</span>
-						</Popup>
-					</Marker>
+
+					{memoryMarkers}
+
 					<Control position="topright" >
 						<div 
 							style={{

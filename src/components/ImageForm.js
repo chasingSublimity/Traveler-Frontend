@@ -17,6 +17,7 @@ class ImageForm extends Component {
 	handleDrop(files) {
 		uploadImageToS3(files)
 		.then(returnData => {
+			console.log(returnData);
 			// fire action which adds url to state
 			this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
 		})
