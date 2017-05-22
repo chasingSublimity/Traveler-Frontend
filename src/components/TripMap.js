@@ -59,19 +59,19 @@ class TripMap extends Component {
 	handleRightPanClick() {
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.panBy([100, 0]);
-		window.console.log('Panning right');
+		console.log('Panning right');
 	}
 
 	handleLeftPanClick() {
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.panBy([-100, 0]);
-		window.console.log('Panning left');
+		console.log('Panning left');
 	}
 
 	handleDownPanClick() {
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.panBy([0, 100]);
-		window.console.log('Panning down');
+		console.log('Panning down');
 	}
 
 
