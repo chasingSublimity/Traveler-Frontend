@@ -44,7 +44,7 @@ export const loadTripViewPageSuccess = value => ({
 	value
 });
 
-export const loadTripViewPage = userName => (dispatch, getState) => {
+export const loadTripViewPage = userName => (dispatch) => {
 	const serverUrl = `http://localhost:8080/trips?userName=${userName}`;
 	return axios.get(serverUrl)
 		.then(response => {
@@ -113,12 +113,16 @@ export const selectTripSuccess = values => ({
 	values
 });
 
-export const selectTrip = tripId => (dispatch) => {
-
+export const SET_MAP_CENTER = 'SET_MAP_CENTER';
+export const setMapCenter = value => ({
+	type: SET_MAP_CENTER,
+	value
+});
+	
+export const selectTrip = tripId => (dispatch, getState) => {
 	const serverUrl = `http://localhost:8080/trips/${tripId}`;
 	return axios.get(serverUrl)
 		.then(response => {
-			console.log(response.data);
 			const tripId = response.data.tripData.id;
 			const memories = response.data.memories;
 
