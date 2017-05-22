@@ -11,19 +11,10 @@ import '../css/TripMap.css';
 
 const cookies = new Cookies();
 
-const position1 = [32.7555, -97.3308];
-const position2 = [42.7555, -97.3308];
-
-// helper functions finds a rough middle point between two coordinates.
-// we use this to set the map center to somewhere inbetween the destination and origin.
-const mapCenter = findMidPoint(...position1, ...position2);
-
-
-
+// static values, so these arent included in the store
 const stamenTonerTiles = 'http://tile.stamen.com/toner/{z}/{x}/{y}.png';
 const stamenTonerAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
-// need to have a map container component
 class TripMap extends Component {
 	constructor(props)  {
 		super(props);
@@ -34,12 +25,10 @@ class TripMap extends Component {
 	}
 
 	componentDidMount() {
-
 		// handle zoom level
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.on('zoomend', () => {
 			const updatedZoomLevel = leafletMap.getZoom();
-			console.log(updatedZoomLevel);
 			// fire action to set zoom level in redducer
 			this.props.dispatch(actions.setZoomLevel(updatedZoomLevel));
 		});
@@ -48,8 +37,16 @@ class TripMap extends Component {
 		// if a cookie is set, a get request to the server is fired off to populate the memories
 		const tripIdInCookie = cookies.get('selectedTripId');
 		if (tripIdInCookie) {
-			console.log('trip cookie present. making ajax request');
-			this.props.dispatch(actions.selectTrip(tripIdInCookie));
+			this.props.dispatch(actions.selectTrip(tripIdInCookie))
+				.then(() => {
+					// after memories are stored in state, run helper function to determine midpoint and fire action
+					// to set midpoint in state
+					const lastMemoryIndex = (this.props.memories.length) - 1;
+					const firstMemoryLocation = JSON.parse(this.props.memories[0].location);
+					const secondMemoryLocation = JSON.parse(this.props.memories[lastMemoryIndex].location);
+					const midPoint = findMidPoint(...firstMemoryLocation, ...secondMemoryLocation);
+					this.props.dispatch(actions.setMapCenter(midPoint));
+				});
 		}
 	}
 
@@ -79,7 +76,6 @@ class TripMap extends Component {
 
 
 	render() {
-		console.log('memories: ', this.props.memories);
 
 		const memoryMarkers = this.props.memories.map((memory, index) => {
 			const location = JSON.parse(memory.location);	
@@ -95,11 +91,12 @@ class TripMap extends Component {
 				</Marker>
 			);
 		});
+
 		return (
 			<div>
 				<Map
 					ref={m => {this.leafletMap = m;}}
-					center={mapCenter}
+					center={this.props.mapCenter}
 					zoom={this.props.mapZoomLevel}
 				>
 					<TileLayer
@@ -145,7 +142,8 @@ const mapStateToProps = (state, props) => ({
 	selectedTrip: state.main.selectedTrip,
 	memories: state.main.memories,
 	selectedMemory: state.main.selectedMemory,
-	mapZoomLevel: state.main.mapZoomLevel
+	mapZoomLevel: state.main.mapZoomLevel,
+	mapCenter: state.main.mapCenter
 });
 
 export default connect(mapStateToProps)(TripMap);
