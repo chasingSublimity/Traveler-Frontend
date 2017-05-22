@@ -75,7 +75,8 @@ class TripMap extends Component {
 				<Marker key={index} position={location}>
 					<Popup>
 						<div>
-							<img src={memory.imgUrl} alt={'Image comment: ' + memory.comments} />
+							<img className="memory-image" src={memory.imgUrl} alt={'Image comment: ' + memory.comments} />
+							<br/>
 							<span>{memory.comments}</span>
 						</div>
 					</Popup>
@@ -99,25 +100,24 @@ class TripMap extends Component {
 					<Control position="topright" >
 						<div 
 							style={{
-								backgroundColor: 'black',
-								padding: '5px'
+								padding: '5px',
 							}}
 						>
 							<div style={{ marginLeft: '37px' }}>
-								<button onClick={this.handleUpPanClick}>
+								<button className="pan-button" onClick={this.handleUpPanClick}>
 									Pan up
 								</button>
 							</div>
 							<div>
-								<button onClick={this.handleLeftPanClick}>
+								<button className="pan-button" onClick={this.handleLeftPanClick}>
 									Pan left
 								</button>
-								<button onClick={this.handleRightPanClick}>
+								<button className="pan-button" onClick={this.handleRightPanClick}>
 									Pan right
 								</button>
 							</div>
 							<div style={{ marginLeft: '30px' }}>
-								<button onClick={this.handleDownPanClick}>
+								<button className="pan-button" onClick={this.handleDownPanClick}>
 									Pan down
 								</button>
 							</div>

@@ -4,3 +4,21 @@
 	margin: auto;
 	border: black 3px solid; 
 }
+
+.memory-image {
+	max-height: 50px;
+	max-width: 50px !important;
+}
+
+.leaflet-popup-content-wrapper {
+	text-align: center;
+}
+
+div.memory-controls > div {
+	background-color: transparent;
+}
+
+
+.pan-button {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+}
