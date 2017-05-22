@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
+import {reset} from 'redux-form';
 import MemoryCreateForm from './MemoryCreateForm';
 import ImageForm from './ImageForm';
 import '../css/MemoryCreate.css';
@@ -14,6 +15,8 @@ class MemoryCreate extends Component {
 	handleSubmit(values) {
 		// adds memory to db
 		this.props.dispatch(actions.submitMemoryCreateForm(values, this.props.newMemoryImageUrl));
+		// reset form fields
+		this.props.dispatch(reset('memoryCreate'));
 	}
 
 	render() {

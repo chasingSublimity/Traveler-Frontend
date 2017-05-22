@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {reset} from 'redux-form';
 import * as actions from '../actions/index';
 import TripCreateForm from './TripCreateForm';
 import '../css/TripCreate.css';
@@ -12,6 +13,8 @@ class TripCreate extends Component {
 
 	handleSubmit(values) {
 		this.props.dispatch(actions.submitTripCreateForm(values));
+		// reset form fields
+		this.props.dispatch(reset('tripCreate'));
 	}
 
 	render() {

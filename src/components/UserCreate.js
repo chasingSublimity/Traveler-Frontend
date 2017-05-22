@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {reset} from 'redux-form';
 import * as actions from '../actions/index';
 import UserCreateForm from './UserCreateForm';
 import '../css/UserCreate.css';
@@ -12,6 +13,7 @@ class UserCreate extends Component {
 
 	handleSubmit(values) {
 		this.props.dispatch(actions.submitUserCreateForm(values));
+		this.props.dispatch(reset('userCreate'));
 	}
 
 	render() {

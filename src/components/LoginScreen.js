@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {reset} from 'redux-form';
 import LoginForm from './LoginForm';
 import * as actions from '../actions/index';
 
@@ -12,6 +13,7 @@ class LoginScreen extends Component {
 	handleSubmit(values) {
 		console.log(values);
 		this.props.dispatch(actions.attemptLogin(values));
+		this.props.dispatch(reset('loginForm'));
 	}
 
 	render() {
