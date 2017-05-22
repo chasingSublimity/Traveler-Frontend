@@ -11,7 +11,6 @@ import '../css/TripMap.css';
 
 const cookies = new Cookies();
 
-const zoomLevel = 5;
 const position1 = [32.7555, -97.3308];
 const position2 = [42.7555, -97.3308];
 
@@ -86,7 +85,7 @@ class TripMap extends Component {
 			const location = JSON.parse(memory.location);	
 			return (
 				<Marker key={index} position={location}>
-					<Popup>
+					<Popup maxWidth="none" >
 						<div>
 							<img className="memory-image" src={memory.imgUrl} alt={'Image comment: ' + memory.comments} />
 							<br/>
@@ -101,7 +100,7 @@ class TripMap extends Component {
 				<Map
 					ref={m => {this.leafletMap = m;}}
 					center={mapCenter}
-					zoom={zoomLevel}
+					zoom={this.props.mapZoomLevel}
 				>
 					<TileLayer
 						attribution={stamenTonerAttr}
