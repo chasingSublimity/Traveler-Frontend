@@ -114,13 +114,16 @@ export const selectTripSuccess = values => ({
 });
 
 export const selectTrip = tripId => (dispatch) => {
-	console.log('select trip fired with id: ', tripId);
+
 	const serverUrl = `http://localhost:8080/trips/${tripId}`;
 	return axios.get(serverUrl)
 		.then(response => {
 			console.log(response.data);
 			const tripId = response.data.tripData.id;
 			const memories = response.data.memories;
+
+			// stores tripId in cookie to handle AJAX requests post page-refresh
+			cookies.set('selectedTripId', tripId, {path: '/'});
 			// store array of memories in store and set selectedTrip id in store
 			dispatch(selectTripSuccess({tripId, memories}));
 		});

@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import Control from 'react-leaflet-control';
+import Cookies from 'universal-cookie';
 
 import findMidPoint from '../helperFunctions/findMidPoint';
 
 import * as actions from '../actions/index';
 import '../css/TripMap.css';
+
+const cookies = new Cookies();
 
 const zoomLevel = 5;
 const position1 = [32.7555, -97.3308];
@@ -32,6 +35,8 @@ class TripMap extends Component {
 	}
 
 	componentDidMount() {
+
+		// handle zoom level
 		const leafletMap = this.leafletMap.leafletElement;
 		leafletMap.on('zoomend', () => {
 			const updatedZoomLevel = leafletMap.getZoom();
@@ -39,6 +44,14 @@ class TripMap extends Component {
 			// fire action to set zoom level in redducer
 			this.props.dispatch(actions.setZoomLevel(updatedZoomLevel));
 		});
+
+		// handle AJAX requests post-refresh
+		// if a cookie is set, a get request to the server is fired off to populate the memories
+		const tripIdInCookie = cookies.get('selectedTripId');
+		if (tripIdInCookie) {
+			console.log('trip cookie present. making ajax request');
+			this.props.dispatch(actions.selectTrip(tripIdInCookie));
+		}
 	}
 
 	handleUpPanClick() {
