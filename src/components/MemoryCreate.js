@@ -32,7 +32,7 @@ class MemoryCreate extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-	newMemoryImageUrl: state.main.newMemoryImageUrl,
+	newMemoryImageUrl: state.main.newMemoryImageUrl
 });
 
 export default connect(mapStateToProps)(MemoryCreate);

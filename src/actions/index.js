@@ -62,8 +62,10 @@ export const submitMemoryCreateFormSuccess = value =>({
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
 	const serverUrl = 'http://localhost:8080/memories';
+	const {selectedTripId} = getState().main;
 	// add formatted imgUrl to memoryData
 	memoryData.imgUrl = stripQueryString(newMemoryImageUrl);
+	memoryData.tripId = selectedTripId;
 	console.log(memoryData);
 	return axios.post(serverUrl, memoryData)
 		.then(response => {

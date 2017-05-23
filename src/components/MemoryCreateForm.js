@@ -8,8 +8,6 @@ class MemoryCreateForm extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<form onSubmit={handleSubmit} className="MemoryCreateForm-form" action="" method="post">
-				<label htmlFor="tripId">tripId:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="tripId" type="text" name="tripId"/>
 
 				<label htmlFor="location">Location:</label>
 				<Field component="input" className="MemoryCreateForm-input" id="location" type="text" name="location"/>
