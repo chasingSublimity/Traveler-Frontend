@@ -20,7 +20,7 @@ class LoginScreen extends Component {
 		return (
 			<div className="LoginScreen">
 
-				<p>Look at this fancy-ass login form!</p>
+				<p>Login below to get started!</p>
 				<LoginForm onSubmit={this.handleSubmit} />
 			</div>
 		);
