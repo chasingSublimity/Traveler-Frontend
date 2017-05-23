@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import store from './store';
 import './css/index.css';
@@ -11,9 +12,11 @@ import {routes} from './components/Routes.js';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App>
-			{routes}
-		</App>
+		<MuiThemeProvider>
+			<App>
+				{routes}
+			</App>
+		</MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
