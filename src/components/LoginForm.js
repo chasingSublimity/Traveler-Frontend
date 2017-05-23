@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
-// import * as actions from '../actions/index';
+import RaisedButton from 'material-ui/RaisedButton';
+import {TextField} from 'redux-form-material-ui';
+
 import '../css/LoginForm.css';
 
 class LoginForm extends Component {
@@ -9,13 +11,22 @@ class LoginForm extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<form onSubmit={handleSubmit} className="LoginForm-form" action="" method="post">
-				<label htmlFor="userName">Username:</label>
-				<Field component="input" className="LoginForm-input" id="userName" type="text" name="userName"/>
 
-				<label htmlFor="password">Password:</label>
-				<Field component="input" className="LoginForm-input" id="password" type="text" name="password"/>
-
-				<input type="submit" value="Submit"/>
+				<Field required component={TextField} 
+								floatingLabelText="Username" 
+								className="LoginForm-input" 
+								id="userName" 
+								type="text" 
+								name="userName"/>
+				<br/>		
+				<Field required component={TextField} 
+								floatingLabelText="Password" 
+								className="LoginForm-input" 
+								id="password" 
+								type="text" 
+								name="password"/>
+				<br/>	
+				<RaisedButton label="Submit" type="submit" />
 			</form>
 		); 
 	}

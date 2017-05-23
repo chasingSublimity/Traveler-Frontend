@@ -13,7 +13,7 @@ class MemoryCreateForm extends Component {
 		return (
 			<form onSubmit={handleSubmit} className="MemoryCreateForm-form" action="" method="post">
 				
-				<Field component={AutoComplete} 
+				<Field required component={AutoComplete} 
 								floatingLabelText="Location"
 								className="MemoryCreateForm-input" 
 								id="location"
@@ -22,14 +22,15 @@ class MemoryCreateForm extends Component {
 								filter={MUIAutoComplete.fuzzyFilter}
 								dataSource={['Fort Worth', 'Lubbock', 'Dallas', 'Houston']}
 							/>
-
-				<Field component={TextField} 
+				<br/>
+				
+				<Field required component={TextField} 
 								floatingLabelText="Date" 
 								className="MemoryCreateForm-input" 
 								id="date" 
 								type="text" 
 								name="date"/>
-
+				<br/>				
 				<Field component={TextField} 
 								floatingLabelText="Comments" 
 								className="MemoryCreateForm-input" 

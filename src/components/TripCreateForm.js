@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import '../css/TripCreateForm.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import {TextField} from 'redux-form-material-ui';
 
 
 class TripCreateForm extends Component {
@@ -9,15 +11,44 @@ class TripCreateForm extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<form onSubmit={handleSubmit} className="TripCreateForm-form" action="" method="post">			
-				<label htmlFor="origin">Origin:</label>
-				<Field component="input" className="TripCreateForm-input" id="origin" type="text" name="origin"/>
-				<label htmlFor="destination">Destination:</label>
-				<Field component="input" className="TripCreateForm-input" id="destination" type="text" name="destination"/>
-				<label htmlFor="beginDate">Begin Date:</label>
-				<Field component="input" className="TripCreateForm-input" id="beginDate" type="text" name="beginDate"/>
-				<label htmlFor="endDate">End Date:</label>
-				<Field component="input" className="TripCreateForm-input" id="endDate" type="text" name="endDate"/>
-				<input type="submit" value="Submit"/>
+
+			<Field component={TextField} 
+							floatingLabelText="Origin"
+							className="TripCreateForm-input" 
+							id="origin"
+							type="text"
+							name="origin"
+						/>
+			<br/>
+
+			<Field required component={TextField} 
+							floatingLabelText="Destination"
+							className="TripCreateForm-input" 
+							id="destination"
+							type="text"
+							name="destination"
+						/>
+			<br/>
+
+			<Field required component={TextField} 
+							floatingLabelText="Begin Date"
+							className="TripCreateForm-input" 
+							id="beginDate"
+							type="text"
+							name="beginDate"
+						/>
+			<br/>
+
+			<Field required component={TextField} 
+							floatingLabelText="End Date"
+							className="TripCreateForm-input" 
+							id="endDate"
+							type="text"
+							name="endDate"
+						/>
+			<br/>
+
+				<RaisedButton label="Submit" type="submit" />
 			</form>
 		); 
 	}
