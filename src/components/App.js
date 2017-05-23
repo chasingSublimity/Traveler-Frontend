@@ -45,8 +45,6 @@ class App extends Component {
 	}
 
 	handleRequestClose(event) {
-		// prevents ghost click
-		event.preventDefault();
 		// dispatch action to set isAppBarPopover open to false
 		this.props.dispatch(actions.closeAppBarPopover());
 	}
