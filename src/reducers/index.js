@@ -3,6 +3,8 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
+	isAppBarPopoverOpen: false,
+	popOverAnchor: null,
 	newMemoryImageUrl: '',
 	userName: '',
 	trips: [],
@@ -18,6 +20,14 @@ const mainReducer = (state=initialState, action) => {
 	let newState = {};
 
 	switch (action.type) {
+
+	case actions.OPEN_APPBAR_POPOVER:
+		newState = Object.assign({}, state, {isAppBarPopoverOpen: true}, {popOverAnchor: action.value});
+		return newState;
+
+	case actions.CLOSE_APPBAR_POPOVER:
+		newState = Object.assign({}, state, {isAppBarPopoverOpen: false});
+		return newState;
 
 	case actions.SUBMIT_IMG_URL_SUCCESS:
 		newState = Object.assign({}, state, {newMemoryImageUrl: action.value});

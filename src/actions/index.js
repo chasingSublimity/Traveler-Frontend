@@ -4,6 +4,19 @@ import stripQueryString from '../helperFunctions/stripQueryString';
 
 const cookies = new Cookies();
 
+export const OPEN_APPBAR_POPOVER = 'OPEN_APPBAR_POPOVER';
+export const openAppBarPopover = value => ({
+	type: OPEN_APPBAR_POPOVER,
+	value
+});
+
+export const CLOSE_APPBAR_POPOVER = 'CLOSE_APPBAR_POPOVER';
+export const closeAppBarPopover = value => ({
+	type: CLOSE_APPBAR_POPOVER,
+	value
+});
+
+
 // fired after user is successfully created
 export const SUBMIT_USER_CREATE_FORM_SUCCESS = 'SUBMIT_USER_CREATE_FORM_SUCCESS';
 export const submitUserCreateFormSuccess = value =>({
