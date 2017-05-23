@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {AutoComplete as MUIAutoComplete} from 'material-ui/';
+import RaisedButton from 'material-ui/RaisedButton';
+import {TextField, AutoComplete} from 'redux-form-material-ui';
+
 import '../css/MemoryCreateForm.css';
 
 class MemoryCreateForm extends Component {
@@ -8,17 +12,33 @@ class MemoryCreateForm extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<form onSubmit={handleSubmit} className="MemoryCreateForm-form" action="" method="post">
-
-				<label htmlFor="location">Location:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="location" type="text" name="location"/>
-
-				<label htmlFor="date">Date:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="date" type="text" name="date"/>
-
-				<label htmlFor="comments">Comments:</label>
-				<Field component="input" className="MemoryCreateForm-input" id="comments" type="text" name="comments"/>
 				
-				<input type="submit" value="Submit"/>
+				<Field component={AutoComplete} 
+								floatingLabelText="Location"
+								className="MemoryCreateForm-input" 
+								id="location"
+								type="text"
+								name="location"
+								filter={MUIAutoComplete.fuzzyFilter}
+								dataSource={['Fort Worth', 'Lubbock', 'Dallas', 'Houston']}
+							/>
+
+				<Field component={TextField} 
+								floatingLabelText="Date" 
+								className="MemoryCreateForm-input" 
+								id="date" 
+								type="text" 
+								name="date"/>
+
+				<Field component={TextField} 
+								floatingLabelText="Comments" 
+								className="MemoryCreateForm-input" 
+								id="comments" 
+								type="text" 
+								name="comments"/>
+				
+				<br/>
+				<RaisedButton label="Submit" type="submit" />
 			</form>
 		); 
 	}
