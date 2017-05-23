@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import Cookies from 'universal-cookie';
@@ -133,6 +134,11 @@ class TripMap extends Component {
 						</div>
 					</Control>
 				</Map>
+					<Link to="/new-memory">
+						<button className="newMemoryButton">
+							Add memory
+						</button>
+					</Link>
 			</div>
 		); 
 	}

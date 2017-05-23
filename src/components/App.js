@@ -16,6 +16,11 @@ class App extends Component {
 		if (userNameInCookie) {
 			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
 		}
+		
+		const tripIdInCookie = cookies.get('selectedTripId');
+		if (tripIdInCookie) {
+			this.props.dispatch(actions.selectTrip(tripIdInCookie));
+		}
 	}
 	
 	render() {
