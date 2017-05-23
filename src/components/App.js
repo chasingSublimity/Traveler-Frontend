@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 import * as actions from '../actions/index';
 
+import AppBar from 'material-ui/AppBar';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// handles onTap warning thrown by react
+injectTapEventPlugin();
+
 const cookies = new Cookies();
 
 
@@ -25,10 +30,12 @@ class App extends Component {
 	
 	render() {
 		return (
+
 			<div>
-				<div className="header">
-					<h2 className="header-title">Traveler</h2>
-				</div>
+				<AppBar
+					title="TRAVELER"
+					iconClassNameRight="muidocs-icon-navigation-expand-more"
+				/>
 				{this.props.children}
 			</div>
 		);
