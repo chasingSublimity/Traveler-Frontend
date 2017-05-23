@@ -6,7 +6,7 @@
 }
 
 .memory-image {
-	max-height: 50px;
+	max-height: 100px;
 	max-width: 50px !important;
 	padding: 0 5px 0 5px;
 }
@@ -27,7 +27,4 @@ div.memory-controls > div {
 .newMemoryButton {
   margin-left: 44%;
   margin-top: 20px;
-  width: 150px;
-  height: 60px;
-  border-radius: 4px;
 }
