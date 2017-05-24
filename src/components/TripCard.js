@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+// import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 // import {Card, CardHeader, CardMedia, CardAction, CardTitle} from 'material-ui/Card';
 import {GridTile} from 'material-ui/GridList';
 import * as actions from '../actions/index';
