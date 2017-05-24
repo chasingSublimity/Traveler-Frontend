@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.15.3",
+    "history": "^4.6.1",
     "immutable": "^3.8.1",
     "leaflet": "0.7.7",
     "material-ui": "^0.18.1",
@@ -18,7 +19,6 @@
     "react-leaflet": "0.11.7",
     "react-leaflet-control": "^1.4.0",
     "react-redux": "^4.4.5",
-    "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "0.9.5",
     "react-tap-event-plugin": "^2.0.1",
