@@ -1,87 +1,62 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import * as actions from '../actions/index';
 
-import AppBar from 'material-ui/AppBar';
-import Popover from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import isUserLoggedIn from '../helperFunctions/isUserLoggedIn';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-// handles onTap warning thrown by react
-injectTapEventPlugin();
+import Navbar from './Navbar';
+import LandingPage from './LandingPage';
+import UserCreate from './UserCreate';
+import TripCreate from './TripCreate';
+import MemoryCreate from './MemoryCreate';
+import LoginScreen from './LoginScreen';
+import TripView from './TripView';
+import TripMapContainer from './TripMapContainer';
 
 const cookies = new Cookies();
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.handleTouchTap = this.handleTouchTap.bind(this);
-		this.handleRequestClose = this.handleRequestClose.bind(this);
-	}
+// render function in the routes handles auth-based redirection
+// if no data is set in cookie, the user is redirected to the login page
 
-	componentDidMount() {
-		// if a cookie is present, save the value in the store for use communication 
-		// with the server. If the cookie is undefined, the user is redirected to the login page.
-		// Redirection is handled by router.
-		const userNameInCookie = cookies.get('userName');
-		if (userNameInCookie) {
-			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
-		}
-		
-		const tripIdInCookie = cookies.get('selectedTripId');
-		if (tripIdInCookie) {
-			this.props.dispatch(actions.selectTrip(tripIdInCookie));
-		}
-	}
+export default class App extends Component {
 
-	handleTouchTap(event) {
-		// prevents ghost click
-		event.preventDefault();
-		// dispatch action to change popbarOpen boolean and anchor
-		this.props.dispatch(actions.openAppBarPopover(event.currentTarget));
-	}
-
-	handleRequestClose(event) {
-		// dispatch action to set isAppBarPopover open to false
-		this.props.dispatch(actions.closeAppBarPopover());
-	}
-	
 	render() {
 		return (
+		<Router>
 			<div>
-				<AppBar onLeftIconButtonTouchTap={this.handleTouchTap}
-					title="TRAVELER"
-				/>
-				<Popover
-					open={this.props.isAppBarPopoverOpen}
-					anchorEl={this.props.popOverAnchor}
-					anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-					targetOrigin={{horizontal: 'left', vertical: 'top'}}
-					onRequestClose={this.handleRequestClose}
-					canAutoPosition={false}
-				>
-					<Menu>
-						<MenuItem primaryText="Home" />
-						<MenuItem primaryText="Login" />
-						<MenuItem primaryText="New User" />
-						<MenuItem primaryText="New Trip" />
-						<MenuItem primaryText="New Memory" />
-						<MenuItem primaryText="Trips" />
-					</Menu>
-				</Popover>
-				{this.props.children}
+				<Navbar />
+				<Route exact path="/" component={LandingPage} />
+				<Route exact path="/login" component={LoginScreen} />
+				<Route exact path="/new-user" component={UserCreate} />
+				<Route exact path="/new-trip" render={() => (
+																isUserLoggedIn(cookies.get('userName')) ? (<TripCreate />) : 
+																					(<Redirect to="/login"/>)
+																)} />
+
+				<Route exact path="/new-memory"render={() => (
+																isUserLoggedIn(cookies.get('userName')) ? (<MemoryCreate />) : 
+																					(<Redirect to="/login"/>)
+																)} />
+
+				<Route exact path="/trips" render={() => (
+																isUserLoggedIn(cookies.get('userName')) ? (<TripView />) : 
+																					(<Redirect to="/login"/>)
+																)} />
+
+				<Route exact path="/map" component={TripMapContainer} />
+
+				<div className="links">
+					<ul>
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/login">Login</Link></li>
+						<li><Link to="/new-user">New User</Link></li>
+						<li><Link to="/new-trip">New Trip</Link></li>
+						<li><Link to="/new-memory">New Memory</Link></li>
+						<li><Link to="/trips">Trips</Link></li>
+					</ul>
+				</div>
 			</div>
+		</Router>
 		);
 	}
 }
-
-const mapStateToProps = (state, props) => ({
-	isAppBarPopoverOpen: state.main.isAppBarPopoverOpen,
-	popOverAnchor: state.main.popOverAnchor
-});
-
-
-export default connect(mapStateToProps)(App);

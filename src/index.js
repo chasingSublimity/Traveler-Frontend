@@ -7,15 +7,13 @@ import store from './store';
 import './css/index.css';
 
 import App from './components/App';
-import {routes} from './components/Routes.js';
+// import {routes} from './components/Routes.js';
 
 
 ReactDOM.render(
 	<Provider store={store}>
 		<MuiThemeProvider>
-			<App>
-				{routes}
-			</App>
+			<App />
 		</MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
