@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+// import {Card, CardHeader, CardMedia, CardAction, CardTitle} from 'material-ui/Card';
+import {GridTile} from 'material-ui/GridList';
 import * as actions from '../actions/index';
 import '../css/TripCard.css';
+
 
 class TripCard extends Component {
 	constructor(props) {
@@ -18,16 +21,14 @@ class TripCard extends Component {
 	render() {
 		return (
 			<Link to="/map" onClick={this.handleClick} href="#" >
-				<div className="TripCard" id={this.props.id}>
-					<img className="TripCard-image" src={this.props.imgUrl} alt=""/>
-					<div className="TripCard-description">
-						<p className="TripCard-origin">Origin: {this.props.origin}</p>
-						<p className="TripCard-destination">Destination: {this.props.destination}</p>
-						<p className="TripCard-beginDate">Begin: {this.props.beginDate}</p>
-						<p className="TripCard-endDate">End: {this.props.endDate}</p>
-					</div>
-				</div>
-			</Link>
+				<GridTile
+					id={this.props.id}
+					title={`${this.props.origin} -> ${this.props.destination}`} 
+					subtitle={`${this.props.beginDate} -> ${this.props.endDate}`}
+				>
+					<img alt="" src={'https://media-cdn.tripadvisor.com/media/photo-s/03/9b/30/26/seattle.jpg'} />
+				</GridTile>
+			</Link>	
 		); 
 	}
 }

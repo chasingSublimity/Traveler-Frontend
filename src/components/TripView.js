@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment-timezone';
+import {GridList} from 'material-ui/GridList';
 import Cookies from 'universal-cookie';
 
 import * as actions from '../actions/index';
@@ -8,6 +9,19 @@ import TripCard from './TripCard';
 import '../css/TripView.css';
 
 const cookies = new Cookies();
+
+const styles = {
+	root: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		justifyContent: 'space-around',
+	},
+	gridList: {
+		width: 500,
+		height: 450,
+		overflowY: 'auto',
+	}
+};
 
 class TripView extends Component {
 
@@ -35,9 +49,14 @@ class TripView extends Component {
 		});
 
 		return (
-			<div className="TripView">
-				<p>Look at this fancy-ass display!</p>
-				{trips}
+			<div style={styles.root} className="TripView">
+				<p>Choose a trip!</p>
+				<GridList
+					cellHeight={180}
+					style={styles.gridList}
+				>
+					{trips}
+				</GridList>
 			</div>
 		);
 	}

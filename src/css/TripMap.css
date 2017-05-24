@@ -1,6 +1,7 @@
 .leaflet-container {
 	height: 600px;
-	width: 600px;
+	max-width: 600px;
+	width: 100%;
 	margin: auto;
 	border: black 3px solid; 
 }
@@ -28,3 +29,9 @@ div.memory-controls > div {
   margin-left: 44%;
   margin-top: 20px;
 }
+
+/*a {
+	margin-top: 10px;
+	display: block;
+	text-align: center;
+}*/
