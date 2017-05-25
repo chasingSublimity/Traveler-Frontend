@@ -72,7 +72,7 @@ class App extends Component {
 						<Link className="nav-links" to="/new-user"><MenuItem primaryText="New User" /></Link>
 						<Link className="nav-links" to="/new-trip"><MenuItem primaryText="New Trip" /></Link>
 						<Link className="nav-links" to="/new-memory"><MenuItem primaryText="New Memory" /></Link>
-						<Link className="nav-links" to="/trip"><MenuItem primaryText="Trips" /></Link>
+						<Link className="nav-links" to="/trips"><MenuItem primaryText="Trips" /></Link>
 					</Menu>
 				</Popover>
 			</div>
