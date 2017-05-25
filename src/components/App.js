@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {/*BrowserRouter as */Router, Route, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 import history from '../history';
+import * as actions from '../actions/index';
 
 import isUserLoggedIn from '../helperFunctions/isUserLoggedIn';
 
@@ -18,7 +20,22 @@ const cookies = new Cookies();
 
 // render function in the routes handles auth-based redirection
 // if no data is set in cookie, the user is redirected to the login page
-export default class App extends Component {
+class App extends Component {
+
+	componentDidMount() {
+		// if a cookie is present, save the value in the store for use communication 
+		// with the server. If the cookie is undefined, the user is redirected to the login page.
+		// Redirection is handled by router.
+		const userNameInCookie = cookies.get('userName');
+		if (userNameInCookie) {
+			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
+		}
+		
+		const tripIdInCookie = cookies.get('selectedTripId');
+		if (tripIdInCookie) {
+			this.props.dispatch(actions.selectTrip(tripIdInCookie));
+		}
+	}
 
 	render() {
 		return (
@@ -49,3 +66,5 @@ export default class App extends Component {
 		);
 	}
 }
+
+export default connect()(App);

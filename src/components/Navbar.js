@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Cookies from 'universal-cookie';
 import * as actions from '../actions/index';
 
 import {Link} from 'react-router-dom';
@@ -16,28 +15,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // handles onTap warning thrown by react
 injectTapEventPlugin();
 
-const cookies = new Cookies();
-
-class App extends Component {
+class Navbar extends Component {
 	constructor(props) {
 		super(props);
 		this.handleTouchTap = this.handleTouchTap.bind(this);
 		this.handleRequestClose = this.handleRequestClose.bind(this);
-	}
-
-	componentDidMount() {
-		// if a cookie is present, save the value in the store for use communication 
-		// with the server. If the cookie is undefined, the user is redirected to the login page.
-		// Redirection is handled by router.
-		const userNameInCookie = cookies.get('userName');
-		if (userNameInCookie) {
-			this.props.dispatch(actions.setUserNameFromCookie(userNameInCookie));
-		}
-		
-		const tripIdInCookie = cookies.get('selectedTripId');
-		if (tripIdInCookie) {
-			this.props.dispatch(actions.selectTrip(tripIdInCookie));
-		}
 	}
 
 	handleTouchTap(event) {
@@ -47,7 +29,7 @@ class App extends Component {
 		this.props.dispatch(actions.openAppBarPopover(event.currentTarget));
 	}
 
-	handleRequestClose(event) {
+	handleRequestClose() {
 		// dispatch action to set isAppBarPopover open to false
 		this.props.dispatch(actions.closeAppBarPopover());
 	}
@@ -86,4 +68,4 @@ const mapStateToProps = (state, props) => ({
 });
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Navbar);
