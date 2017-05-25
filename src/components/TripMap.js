@@ -72,13 +72,11 @@ class TripMap extends Component {
 						attribution={stamenTonerAttr}
 						url={stamenTonerTiles}
 					/>
-
 					{memoryMarkers}
-
 				</Map>
-					<Link to="/new-memory">
-						<RaisedButton className="newMemoryButton" label="Add Memory" type="submit" />
-					</Link>
+				<Link className="newMemoryButtonContainer" to="/new-memory">
+					<RaisedButton className="newMemoryButton" label="Add Memory" type="submit" />
+				</Link>
 			</div>
 		); 
 	}
