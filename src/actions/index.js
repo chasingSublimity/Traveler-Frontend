@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import stripQueryString from '../helperFunctions/stripQueryString';
+import history from '../history';
 
 const cookies = new Cookies();
 
@@ -111,6 +112,8 @@ export const attemptLogin = authData => (dispatch, getState) => {
 			// and for redirects
 			cookies.set('userName', userName, {path: '/'});
 			dispatch(attemptLoginSuccess(userName));
+			// redirect after successful login
+			history.push('/trips');
 		}).catch(err => {
 			console.log(err);
 		});
@@ -122,18 +125,18 @@ export const setUserNameFromCookie = value => ({
 	value
 });
 
-export const SELECT_TRIP_SUCCESS = 'SELECT_TRIP_SUCCESS';
-export const selectTripSuccess = values => ({
-	type: SELECT_TRIP_SUCCESS,
-	values
-});
-
 export const SET_MAP_CENTER = 'SET_MAP_CENTER';
 export const setMapCenter = value => ({
 	type: SET_MAP_CENTER,
 	value
 });
 	
+export const SELECT_TRIP_SUCCESS = 'SELECT_TRIP_SUCCESS';
+export const selectTripSuccess = values => ({
+	type: SELECT_TRIP_SUCCESS,
+	values
+});
+
 export const selectTrip = tripId => (dispatch, getState) => {
 	const serverUrl = `http://localhost:8080/trips/${tripId}`;
 	return axios.get(serverUrl)
@@ -145,6 +148,8 @@ export const selectTrip = tripId => (dispatch, getState) => {
 			cookies.set('selectedTripId', tripId, {path: '/'});
 			// store array of memories in store and set selectedTrip id in store
 			dispatch(selectTripSuccess({tripId, memories}));
+		}).then(() => {
+			history.push('/map');
 		});
 };
 
