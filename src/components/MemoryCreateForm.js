@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {AutoComplete as MUIAutoComplete} from 'material-ui/';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -39,7 +40,7 @@ class MemoryCreateForm extends Component {
 								name="comments"/>
 				
 				<br/>
-				<RaisedButton label="Submit" type="submit" />
+				<RaisedButton disabled={this.props.isButtonDisabled} label="Submit" type="submit" />
 			</form>
 		); 
 	}
@@ -49,4 +50,8 @@ MemoryCreateForm = reduxForm({
 	form: 'memoryCreate'
 })(MemoryCreateForm);
 
-export default MemoryCreateForm;
+const mapStateToProps = (state, props) => ({
+	isButtonDisabled: state.main.isButtonDisabled
+});
+
+export default connect(mapStateToProps)(MemoryCreateForm);
