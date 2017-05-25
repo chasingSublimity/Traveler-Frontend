@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import {/*BrowserRouter as */Router, Route, Redirect} from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import history from '../history';
 
 import isUserLoggedIn from '../helperFunctions/isUserLoggedIn';
 
@@ -17,12 +18,11 @@ const cookies = new Cookies();
 
 // render function in the routes handles auth-based redirection
 // if no data is set in cookie, the user is redirected to the login page
-
 export default class App extends Component {
 
 	render() {
 		return (
-		<Router>
+		<Router history={history}>
 			<div>
 				<Navbar />
 				<Route exact path="/" component={LandingPage} />
@@ -44,17 +44,6 @@ export default class App extends Component {
 																)} />
 
 				<Route exact path="/map" component={TripMapContainer} />
-
-				<div className="links">
-					<ul>
-						<li><Link to="/">Home</Link></li>
-						<li><Link to="/login">Login</Link></li>
-						<li><Link to="/new-user">New User</Link></li>
-						<li><Link to="/new-trip">New Trip</Link></li>
-						<li><Link to="/new-memory">New Memory</Link></li>
-						<li><Link to="/trips">Trips</Link></li>
-					</ul>
-				</div>
 			</div>
 		</Router>
 		);
