@@ -18,12 +18,14 @@ class TripCard extends Component {
 	}
 
 	render() {
+
 		return (
-			<Link to="/map" onClick={this.handleClick} href="#" >
+			<Link to="#" onClick={this.handleClick}  >
 				<GridTile
 					id={this.props.id}
 					title={`${this.props.origin} -> ${this.props.destination}`} 
 					subtitle={`${this.props.beginDate} -> ${this.props.endDate}`}
+					onClick={this.handleClick}
 				>
 					<img alt="" src={'https://media-cdn.tripadvisor.com/media/photo-s/03/9b/30/26/seattle.jpg'} />
 				</GridTile>
