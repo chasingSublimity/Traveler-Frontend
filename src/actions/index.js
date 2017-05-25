@@ -93,6 +93,12 @@ export const submitImgUrlSuccess = value => ({
 	value
 });
 
+export const TOGGLE_BUTTON = 'TOGGLE_BUTTON';
+export const toggleButton = value => ({
+	type: TOGGLE_BUTTON,
+	value
+});
+
 // trigger redirect here
 export const ATTEMPT_LOGIN_SUCCESS = 'ATTEMPT_LOGIN_SUCCESS';
 export const attemptLoginSuccess = value => ({
@@ -149,7 +155,10 @@ export const selectTrip = tripId => (dispatch, getState) => {
 			// store array of memories in store and set selectedTrip id in store
 			dispatch(selectTripSuccess({tripId, memories}));
 		}).then(() => {
-			history.push('/map');
+			// if this action is fired from '/trips', redirect to /map
+			if (window.location.pathname === '/trips') {
+				history.push('/map');
+			}
 		});
 };
 
