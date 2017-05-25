@@ -5,6 +5,7 @@ import {AutoComplete as MUIAutoComplete} from 'material-ui/';
 import RaisedButton from 'material-ui/RaisedButton';
 import {TextField, AutoComplete} from 'redux-form-material-ui';
 
+import cityNames from '../helperFunctions/cities';
 import '../css/MemoryCreateForm.css';
 
 class MemoryCreateForm extends Component {
@@ -15,13 +16,13 @@ class MemoryCreateForm extends Component {
 			<form onSubmit={handleSubmit} className="MemoryCreateForm-form" action="" method="post">
 				
 				<Field required component={AutoComplete} 
-								floatingLabelText="Location"
+								floatingLabelText="Location (City, State/Region)"
 								className="MemoryCreateForm-input" 
 								id="location"
 								type="text"
 								name="location"
 								filter={MUIAutoComplete.fuzzyFilter}
-								dataSource={['Fort Worth', 'Lubbock', 'Dallas', 'Houston']}
+								dataSource={cityNames}
 							/>
 				<br/>
 				
