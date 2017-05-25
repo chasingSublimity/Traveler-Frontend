@@ -4,6 +4,7 @@ import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
 	isAppBarPopoverOpen: false,
+	isButtonDisabled: true,
 	popOverAnchor: null,
 	newMemoryImageUrl: '',
 	userName: '',
@@ -31,6 +32,10 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.SUBMIT_IMG_URL_SUCCESS:
 		newState = Object.assign({}, state, {newMemoryImageUrl: action.value});
+		return newState;
+
+	case actions.TOGGLE_BUTTON:
+		newState = Object.assign({}, state, {isButtonDisabled: !(action.value)});
 		return newState;
 
 	case actions.ATTEMPT_LOGIN_SUCCESS:
