@@ -20,6 +20,9 @@ class ImageForm extends Component {
 			console.log(returnData);
 			// fire action which adds url to state
 			this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
+			// once the file has been uploaded, the form submission button is enabled.
+			// This will prevent the user from submitting memories without images.
+			this.props.dispatch(actions.toggleButton(this.props.isButtonDisabled));
 		})
 		.catch(err => {
 			console.log(err);
@@ -39,6 +42,7 @@ class ImageForm extends Component {
 
 const mapStateToProps = (state, props) => ({
 	newMemoryImageUrl: state.newMemoryImageUrl,
+	isButtonDisabled: state.main.isButtonDisabled
 });
 
 export default  connect(mapStateToProps)(ImageForm);
