@@ -14,12 +14,13 @@ const styles = {
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
-		justifyContent: 'space-around',
+		justifyContent: 'space-around'
 	},
 	gridList: {
 		width: 500,
 		height: 450,
 		overflowY: 'auto',
+		margin: '20px'
 	}
 };
 
@@ -50,7 +51,6 @@ class TripView extends Component {
 
 		return (
 			<div style={styles.root} className="TripView">
-				<p>Choose a trip!</p>
 				<GridList
 					cellHeight={180}
 					style={styles.gridList}
