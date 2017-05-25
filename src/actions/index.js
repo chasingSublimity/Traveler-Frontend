@@ -27,7 +27,7 @@ export const submitUserCreateFormSuccess = value =>({
 
 // send user creation post request to API
 export const submitUserCreateForm = userData => dispatch => {
-	const url = 'http://localhost:8080/users';
+	const url = 'https://still-coast-98142.herokuapp.com/users';
 	return axios.post(url, userData)
 		.then(response => {
 		console.log(response);
@@ -43,7 +43,7 @@ export const submitTripCreateFormSuccess = value => ({
 
 // send trip creation post request to API
 export const submitTripCreateForm = tripData => (dispatch, getState) => {
-	const serverUrl = 'http://localhost:8080/trips';
+	const serverUrl = 'https://still-coast-98142.herokuapp.com/trips';
 	const {userName} = (getState()).main;
 	tripData.userName = userName;
 	return axios.post(serverUrl, tripData)
@@ -59,7 +59,7 @@ export const loadTripViewPageSuccess = value => ({
 });
 
 export const loadTripViewPage = userName => (dispatch) => {
-	const serverUrl = `http://localhost:8080/trips?userName=${userName}`;
+	const serverUrl = `https://still-coast-98142.herokuapp.com/trips?userName=${userName}`;
 	return axios.get(serverUrl)
 		.then(response => {
 			dispatch(loadTripViewPageSuccess(response.data.trips));
@@ -75,7 +75,7 @@ export const submitMemoryCreateFormSuccess = value =>({
 
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
-	const serverUrl = 'http://localhost:8080/memories';
+	const serverUrl = 'https://still-coast-98142.herokuapp.com/memories';
 	const {selectedTripId} = getState().main;
 	// add formatted imgUrl to memoryData
 	memoryData.imgUrl = stripQueryString(newMemoryImageUrl);
@@ -107,7 +107,7 @@ export const attemptLoginSuccess = value => ({
 });
 
 export const attemptLogin = authData => (dispatch, getState) => {
-	const serverUrl = 'http://localhost:8080/login';
+	const serverUrl = 'https://still-coast-98142.herokuapp.com/login';
 	// submit user login data to server
 	return axios.post(serverUrl, authData)
 		.then(response => {
@@ -144,7 +144,7 @@ export const selectTripSuccess = values => ({
 });
 
 export const selectTrip = tripId => (dispatch, getState) => {
-	const serverUrl = `http://localhost:8080/trips/${tripId}`;
+	const serverUrl = `https://still-coast-98142.herokuapp.com/trips/${tripId}`;
 	return axios.get(serverUrl)
 		.then(response => {
 			const tripId = response.data.tripData.id;
