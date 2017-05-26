@@ -13,28 +13,28 @@ class UserCreateForm extends Component {
 		return (
 			<form onSubmit={handleSubmit} className="UserCreateForm-form" action="" method="post">
 
-				<Field component={TextField} 
+				<Field required component={TextField} 
 								floatingLabelText="First Name" 
 								className="UserCreateForm-input" 
 								id="firstName" 
 								type="text" 
 								name="firstName"/>
 				<br/>
-				<Field component={TextField} 
+				<Field required component={TextField} 
 								floatingLabelText="Last Name" 
 								className="UserCreateForm-input" 
 								id="lastName" 
 								type="text" 
 								name="lastName"/>
 				<br/>
-				<Field component={TextField} 
+				<Field required component={TextField} 
 								floatingLabelText="Username" 
 								className="UserCreateForm-input" 
 								id="userName" 
 								type="text" 
 								name="userName"/>
 				<br/>				
-				<Field component={TextField} 
+				<Field required component={TextField} 
 								floatingLabelText="Password" 
 								className="UserCreateForm-input" 
 								id="password" 
