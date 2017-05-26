@@ -40,7 +40,11 @@ class ImageForm extends Component {
 	render() {
 		return (
 			<div className="ImageFormWrapper">
-				<Dropzone onDrop={this.handleDrop} size={150}>
+				<Dropzone onDrop={this.handleDrop} 
+									size={150}
+									multiple={false}
+									accept="image/*"
+									>
 					<div>
 						Drop some shiz here!
 					</div>
