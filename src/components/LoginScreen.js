@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {reset} from 'redux-form';
+import Snackbar from 'material-ui/Snackbar';
 import LoginForm from './LoginForm';
 import * as actions from '../actions/index';
 
@@ -8,12 +9,16 @@ class LoginScreen extends Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
 	handleSubmit(values) {
-		console.log(values);
 		this.props.dispatch(actions.attemptLogin(values));
 		this.props.dispatch(reset('loginForm'));
+	}
+
+	handleRequestClose() {
+		this.props.dispatch(actions.closeSnackbox());
 	}
 
 	render() {
@@ -22,14 +27,20 @@ class LoginScreen extends Component {
 
 				<p>Login below to get started!</p>
 				<LoginForm onSubmit={this.handleSubmit} />
+				<Snackbar
+					open={this.props.isSnackbarOpen}
+					message={this.props.snackbarMessage}
+					autoHideDuration={3000}
+					onRequestClose={this.handleRequestClose}
+				/>
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = (state, props) => ({
-	// userName: state.form.fields.userName,
-	// password: state.form.fields.password,
+	isSnackbarOpen: state.main.isSnackbarOpen,
+	snackbarMessage: state.main.snackbarMessage,
 });
 
 export default connect(mapStateToProps)(LoginScreen);
