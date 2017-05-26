@@ -65,7 +65,12 @@ export const submitTripCreateForm = tripData => (dispatch, getState) => {
 	tripData.userName = userName;
 	return axios.post(serverUrl, tripData)
 		.then(response => {
-			console.log(response);
+			if (response.status === 201) {
+				dispatch(openSnackbox('Success!'));
+			}
+		}).catch(err => {
+			console.log(err);
+			dispatch(openSnackbox('Whoops, something went wrong!'));
 		});
 };
 
