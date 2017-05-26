@@ -41,7 +41,13 @@ export const submitUserCreateForm = userData => dispatch => {
 	const url = 'https://still-coast-98142.herokuapp.com/users';
 	return axios.post(url, userData)
 		.then(response => {
-		console.log(response);
+			if (response.status === 201) {
+				dispatch(openSnackbox('Success!'));
+			}
+		})
+		.catch(err => {
+			console.log(err);
+			dispatch(openSnackbox('Whoops, something went wrong!'));
 		});
 };
 
