@@ -27,6 +27,11 @@ class LoginForm extends Component {
 								name="password"/>
 				<br/>	
 				<RaisedButton label="Submit" type="submit" />
+				<div>
+					<p>Want to see a demo?</p>
+					<p>Username: WhereAmI</p>
+					<p>Password: NotHereOrThere</p>
+				</div>
 			</form>
 		); 
 	}
