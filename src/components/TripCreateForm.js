@@ -12,7 +12,7 @@ class TripCreateForm extends Component {
 		return (
 			<form onSubmit={handleSubmit} className="TripCreateForm-form" action="" method="post">			
 
-			<Field component={TextField} 
+			<Field required component={TextField} 
 							floatingLabelText="Origin"
 							className="TripCreateForm-input" 
 							id="origin"
@@ -31,7 +31,7 @@ class TripCreateForm extends Component {
 			<br/>
 
 			<Field required component={TextField} 
-							floatingLabelText="Begin Date"
+							floatingLabelText="Begin Date -- MM/DD/YYYY"
 							className="TripCreateForm-input" 
 							id="beginDate"
 							type="text"
@@ -40,7 +40,7 @@ class TripCreateForm extends Component {
 			<br/>
 
 			<Field required component={TextField} 
-							floatingLabelText="End Date"
+							floatingLabelText="End Date -- MM/DD/YYYY"
 							className="TripCreateForm-input" 
 							id="endDate"
 							type="text"
