@@ -88,13 +88,6 @@ export const loadTripViewPage = userName => (dispatch) => {
 		});
 };
 
-// fired after trip is successfully created
-export const SUBMIT_MEMORY_CREATE_FORM_SUCCESS = 'SUBMIT_MEMORY_CREATE_FORM_SUCCESS';
-export const submitMemoryCreateFormSuccess = value =>({
-	type: SUBMIT_MEMORY_CREATE_FORM_SUCCESS,
-	value
-});
-
 // send trip creation post request to API
 export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispatch, getState) => {
 	const serverUrl = 'https://still-coast-98142.herokuapp.com/memories';
@@ -105,7 +98,12 @@ export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispat
 	console.log(memoryData);
 	return axios.post(serverUrl, memoryData)
 		.then(response => {
-		console.log(response);
+			if (response.status === 201) {
+				dispatch(openSnackbox('Success!'));
+			}
+		}).catch(err => {
+			console.log(err);
+			dispatch(openSnackbox('Whoops, something went wrong!'));
 		});
 };
 
