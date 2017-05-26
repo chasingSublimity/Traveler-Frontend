@@ -4,6 +4,8 @@ import {reducer as formReducer} from 'redux-form';
 
 const initialState = {
 	isAppBarPopoverOpen: false,
+	isSnackbarOpen: false,
+	snackbarMessage: '',
 	isButtonDisabled: true,
 	popOverAnchor: null,
 	newMemoryImageUrl: '',
@@ -28,6 +30,14 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.CLOSE_APPBAR_POPOVER:
 		newState = Object.assign({}, state, {isAppBarPopoverOpen: false});
+		return newState;
+
+	case actions.OPEN_SNACKBOX:
+		newState = Object.assign({}, state, {isSnackbarOpen: true, snackbarMessage: action.value});
+		return newState;				
+
+	case actions.CLOSE_SNACKBOX:
+		newState = Object.assign({}, state, {isSnackbarOpen: false, snackbarMessage: ''});
 		return newState;
 
 	case actions.SUBMIT_IMG_URL_SUCCESS:

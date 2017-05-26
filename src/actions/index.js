@@ -17,6 +17,17 @@ export const closeAppBarPopover = value => ({
 	value
 });
 
+export const OPEN_SNACKBOX = 'OPEN_SNACKBOX';
+export const openSnackbox = value => ({
+	type: OPEN_SNACKBOX,
+	value
+});
+
+export const CLOSE_SNACKBOX = 'CLOSE_SNACKBOX';
+export const closeSnackbox = () => ({
+	type: CLOSE_SNACKBOX
+});
+
 
 // fired after user is successfully created
 export const SUBMIT_USER_CREATE_FORM_SUCCESS = 'SUBMIT_USER_CREATE_FORM_SUCCESS';
@@ -121,7 +132,14 @@ export const attemptLogin = authData => (dispatch, getState) => {
 			// redirect after successful login
 			history.push('/trips');
 		}).catch(err => {
-			console.log(err);
+			const responseHttpStatusCode = err.response.status;
+			// if login failed, 
+			// dispatch snackbox with appropriate error code
+			if (responseHttpStatusCode === 401) {
+				dispatch(openSnackbox('Invalid login credentials. Please try again!'));
+			} else {
+				dispatch(openSnackbox('Whoops! Something went wrong'));
+			}
 		});
 };
 
