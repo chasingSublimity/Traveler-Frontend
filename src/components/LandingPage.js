@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router-dom';
 import '../css/LandingPage.css';
 import mockup from '../assets/mockup.png';
 import memoryForm from '../assets/memory-create.png';
@@ -17,6 +19,13 @@ export default class LandingPage extends Component {
 						<span>Traveler can help.</span>   
 					</p>
 				</Paper>
+				<br/>
+				<Link className="buttonContainer" to="/login">
+					<RaisedButton className="loginButton" label="Login" type="submit" />
+				</Link>
+				<Link className="buttonContainer" to="/new-user">
+					<RaisedButton className="newUserButton" label="Sign-up" type="submit" />
+				</Link>
 			</div>
 		);
 	}
