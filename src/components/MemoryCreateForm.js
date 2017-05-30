@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {AutoComplete as MUIAutoComplete} from 'material-ui/';
 import RaisedButton from 'material-ui/RaisedButton';
-import {TextField, AutoComplete} from 'redux-form-material-ui';
+import {TextField, AutoComplete, DatePicker} from 'redux-form-material-ui';
 
 import cityNames from '../helperFunctions/cities';
 import '../css/MemoryCreateForm.css';
@@ -26,16 +26,17 @@ class MemoryCreateForm extends Component {
 							/>
 				<br/>
 				
-				<Field required component={TextField} 
+				<Field required component={DatePicker} 
+								locale="en-US"
+								format={null}
 								floatingLabelText="Date" 
 								className="MemoryCreateForm-input" 
 								id="date" 
-								type="text" 
 								name="date"/>
 				<br/>				
 				<Field component={TextField} 
 								floatingLabelText="Comments" 
-								className="MemoryCreateForm-input" 
+								className="comments" 
 								id="comments" 
 								type="text" 
 								name="comments"/>

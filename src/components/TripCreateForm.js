@@ -44,7 +44,7 @@ class TripCreateForm extends Component {
 							locale="en-US"
 							format={null}
 							floatingLabelText="End Date"
-							className="TripCreateForm-input" 
+							className="endDate" 
 							id="endDate"
 							name="endDate"
 						/>

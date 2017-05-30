@@ -5,12 +5,11 @@
   margin: 30px auto;
 }
 
-.MemoryCreateForm-input {
-  display: block;
-  margin: auto;
-}
-
 .submit-button {
 	margin-top: 15px;
 	margin-bottom: 10px;
+}
+
+.comments {
+	margin-top: -20px;
 }
