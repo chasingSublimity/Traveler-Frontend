@@ -4,7 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router-dom';
 import '../css/LandingPage.css';
 import mockup from '../assets/mockup.png';
-import memoryForm from '../assets/memory-create.png';
 
 export default class LandingPage extends Component {
 	render() {
