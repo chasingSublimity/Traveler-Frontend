@@ -48,7 +48,7 @@ class TripCreateForm extends Component {
 						/>
 			<br/>
 
-				<RaisedButton label="Submit" type="submit" />
+				<RaisedButton className="submit-button" label="Submit" type="submit" />
 			</form>
 		); 
 	}

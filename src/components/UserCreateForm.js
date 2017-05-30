@@ -38,11 +38,11 @@ class UserCreateForm extends Component {
 								floatingLabelText="Password" 
 								className="UserCreateForm-input" 
 								id="password" 
-								type="text" 
+								type="password" 
 								name="password"/>
 
 				<br/>
-				<RaisedButton label="Submit" type="submit" />
+				<RaisedButton className="submit-button" label="Submit" type="submit" />
 			</form>
 		); 
 	}

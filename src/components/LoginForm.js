@@ -23,7 +23,7 @@ class LoginForm extends Component {
 									floatingLabelText="Password" 
 									className="LoginForm-input password" 
 									id="password" 
-									type="text" 
+									type="password" 
 									name="password"/>
 					<br/>	
 				</div>
