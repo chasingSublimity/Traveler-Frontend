@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import '../css/TripCreateForm.css';
 import RaisedButton from 'material-ui/RaisedButton';
-import {TextField} from 'redux-form-material-ui';
+import {TextField, DatePicker} from 'redux-form-material-ui';
 
 
 class TripCreateForm extends Component {
@@ -30,20 +30,22 @@ class TripCreateForm extends Component {
 						/>
 			<br/>
 
-			<Field required component={TextField} 
-							floatingLabelText="Begin Date -- MM/DD/YYYY"
+			<Field required component={DatePicker} 
+							locale="en-US"
+							format={null}
+							floatingLabelText="Begin Date"
 							className="TripCreateForm-input" 
 							id="beginDate"
-							type="text"
 							name="beginDate"
 						/>
 			<br/>
 
-			<Field required component={TextField} 
-							floatingLabelText="End Date -- MM/DD/YYYY"
+			<Field required component={DatePicker} 
+							locale="en-US"
+							format={null}
+							floatingLabelText="End Date"
 							className="TripCreateForm-input" 
 							id="endDate"
-							type="text"
 							name="endDate"
 						/>
 			<br/>
