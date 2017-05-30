@@ -46,7 +46,7 @@ class ImageForm extends Component {
 									accept="image/*"
 									>
 					<div>
-						Drop some shiz here!
+						Capture or upload a picture!
 					</div>
 				</Dropzone>
 				<Snackbar

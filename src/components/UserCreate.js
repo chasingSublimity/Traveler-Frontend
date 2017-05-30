@@ -25,7 +25,7 @@ class UserCreate extends Component {
 	render() {
 		return (
 			<div className="UserCreate">
-				<p>Look at this fancy-ass form!</p>
+				<p>Create a new user!</p>
 				<UserCreateForm onSubmit={this.handleSubmit}/>
 				<Snackbar
 					open={this.props.isSnackbarOpen}

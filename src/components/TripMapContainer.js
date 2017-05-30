@@ -7,7 +7,6 @@ class TripMapContainer extends Component {
 	render() {
 		return (
 			<div className="TripMapContainer">
-				<p>Look at this fancy-ass map!</p>
 				<TripMap />
 			</div>
 		);

@@ -27,7 +27,7 @@ class TripCreate extends Component {
 	render() {
 		return (
 			<div className="TripCreate">
-				<p>Look at this fancy-ass form!</p>
+				<p>Create a new trip!</p>
 				<TripCreateForm onSubmit={this.handleSubmit}/>
 				<Snackbar
 					open={this.props.isSnackbarOpen}
