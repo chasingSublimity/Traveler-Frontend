@@ -41,7 +41,7 @@ class MemoryCreateForm extends Component {
 								name="comments"/>
 				
 				<br/>
-				<RaisedButton disabled={this.props.isButtonDisabled} label="Submit" type="submit" />
+				<RaisedButton className="submit-button" disabled={this.props.isButtonDisabled} label="Submit" type="submit" />
 			</form>
 		); 
 	}

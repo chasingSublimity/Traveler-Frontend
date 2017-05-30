@@ -1,9 +1,16 @@
 .MemoryCreateForm-form {
   text-align: center;
   border: 3px black solid;
+  max-width: 325px;
+  margin: 30px auto;
 }
 
 .MemoryCreateForm-input {
   display: block;
   margin: auto;
+}
+
+.submit-button {
+	margin-top: 15px;
+	margin-bottom: 10px;
 }
