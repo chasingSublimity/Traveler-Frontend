@@ -1,4 +1,26 @@
+.LandingPage {
+	text-align: center;
+}
+
+.mockup-container {
+	max-width: 600px;
+	text-align: center;
+	display: inline-block;
+	padding:	0px 10px 0px 10px;
+}
+
 .landing-page-title {
 	margin-top: 35px; 
 	text-align: center;
 }
+
+.mockup {
+	max-width: 500px;
+	height: auto;
+	display: inline-block;
+}
+
+.mockup-text {
+
+}
+
