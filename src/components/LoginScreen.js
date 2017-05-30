@@ -25,7 +25,7 @@ class LoginScreen extends Component {
 		return (
 			<div className="LoginScreen">
 
-				<p>Login below to get started!</p>
+				<h3>Login below to get started!</h3>
 				<LoginForm onSubmit={this.handleSubmit} />
 				<Snackbar
 					open={this.props.isSnackbarOpen}

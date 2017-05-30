@@ -1,10 +1,12 @@
-p {
+h3 {
 	text-align: center;
 }
 
 .LoginForm-form {
   text-align: center;
   border: 3px black solid;
+  max-width: 325px;
+  margin: auto;
 }
 
 .LoginForm-header {
@@ -15,7 +17,15 @@ p {
   font-size: 3em;
 }
 
+.fields {
+  margin-top: 25px;
+}
+
 .LoginForm-input {
   display: block;
-  margin: auto;
+  margin: -10px;
+}
+
+.password {
+  margin-bottom: 45px
 }

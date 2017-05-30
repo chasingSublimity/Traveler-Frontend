@@ -11,26 +11,31 @@ class LoginForm extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<form onSubmit={handleSubmit} className="LoginForm-form" action="" method="post">
-
-				<Field required component={TextField} 
-								floatingLabelText="Username" 
-								className="LoginForm-input" 
-								id="userName" 
-								type="text" 
-								name="userName"/>
-				<br/>		
-				<Field required component={TextField} 
-								floatingLabelText="Password" 
-								className="LoginForm-input" 
-								id="password" 
-								type="text" 
-								name="password"/>
-				<br/>	
+				<div className="fields">
+					<Field required component={TextField} 
+									floatingLabelText="Username" 
+									className="LoginForm-input" 
+									id="userName" 
+									type="text" 
+									name="userName"/>
+					<br/>		
+					<Field required component={TextField} 
+									floatingLabelText="Password" 
+									className="LoginForm-input password" 
+									id="password" 
+									type="text" 
+									name="password"/>
+					<br/>	
+				</div>
 				<RaisedButton label="Submit" type="submit" />
 				<div>
-					<p>Want to see a demo?</p>
-					<p>Username: WhereAmI</p>
-					<p>Password: NotHereOrThere</p>
+					<p>
+						<span>Want to see a demo?</span>
+						<br/>
+						<span>Username: WhereAmI</span>
+						<br/>
+						<span>Password: NotHereOrThere</span>
+					</p>
 				</div>
 			</form>
 		); 
