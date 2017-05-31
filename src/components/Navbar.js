@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 import {Link} from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
@@ -20,6 +22,7 @@ class Navbar extends Component {
 		super(props);
 		this.handleTouchTap = this.handleTouchTap.bind(this);
 		this.handleRequestClose = this.handleRequestClose.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 
 	handleTouchTap(event) {
@@ -32,6 +35,15 @@ class Navbar extends Component {
 	handleRequestClose() {
 		// dispatch action to set isAppBarPopover open to false
 		this.props.dispatch(actions.closeAppBarPopover());
+	}
+
+	handleLogout() {
+		this.handleRequestClose();
+		if (this.props.navbarLoginLinkText === 'Logout') {
+			this.props.dispatch(actions.logout);
+			cookies.remove('userName');
+			cookies.remove('selectedTripId');
+		}
 	}
 	
 	render() {
@@ -50,7 +62,7 @@ class Navbar extends Component {
 				>
 					<Menu>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/"><MenuItem primaryText="Home" /></Link>
-						<Link onClick={this.handleRequestClose} className="nav-links" to="/login"><MenuItem primaryText="Login" /></Link>
+						<Link onClick={this.handleLogout} className="nav-links" to="/login"><MenuItem primaryText={this.props.navbarLoginLinkText} /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-user"><MenuItem primaryText="New User" /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-trip"><MenuItem primaryText="New Trip" /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-memory"><MenuItem primaryText="New Memory" /></Link>
@@ -64,7 +76,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state, props) => ({
 	isAppBarPopoverOpen: state.main.isAppBarPopoverOpen,
-	popOverAnchor: state.main.popOverAnchor
+	popOverAnchor: state.main.popOverAnchor,
+	navbarLoginLinkText: state.main.navbarLoginLinkText,
 });
 
 
