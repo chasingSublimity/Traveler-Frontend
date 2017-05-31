@@ -1,6 +1,7 @@
 import * as actions from '../actions/index';
 import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
+import moment from 'moment';
 
 const initialState = {
 	isAppBarPopoverOpen: false,
@@ -12,6 +13,7 @@ const initialState = {
 	newMemoryImageUrl: '',
 	userName: '',
 	trips: [],
+	today: moment().format('MM/DD/YYYY'),
 	selectedTrip: null,
 	memories: [],
 	selectedMemory: null,

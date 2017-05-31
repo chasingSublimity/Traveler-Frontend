@@ -38,8 +38,8 @@ class TripView extends Component {
 		// and then render array as trip cards
 		let trips = this.props.trips.map((trip, index) => {
 			// use moment to convert date to local timezone
-			const beginDate = moment(trip.beginDate).format('MMMM Do YYYY');
-			const endDate = moment(trip.endDate).format('MMMM Do YYYY');
+			const beginDate = moment(trip.beginDate).format('MM/DD/YYYY');
+			const endDate = moment(trip.endDate).format('MM/DD/YYYY');
 
 			return <TripCard key={index} id={trip.id} 
 																	origin={trip.origin} 

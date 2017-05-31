@@ -6,6 +6,7 @@ h3 {
   text-align: center;
   border: 3px black solid;
   max-width: 325px;
+  min-height: 355px;
   margin: auto;
 }
 

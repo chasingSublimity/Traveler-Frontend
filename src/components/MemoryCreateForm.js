@@ -9,7 +9,6 @@ import cityNames from '../helperFunctions/cities';
 import '../css/MemoryCreateForm.css';
 
 class MemoryCreateForm extends Component {
-
 	render() {
 		const {handleSubmit} = this.props;
 		return (

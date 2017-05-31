@@ -18,7 +18,6 @@ class TripCard extends Component {
 	}
 
 	render() {
-
 		return (
 			<Link to="#" onClick={this.handleClick}  >
 				<GridTile
