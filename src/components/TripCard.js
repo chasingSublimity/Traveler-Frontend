@@ -33,8 +33,4 @@ class TripCard extends Component {
 	}
 }
 
-// const mapStateToProps = (state, props) => ({
-
-// });
-
-export default connect(/*mapStateToProps*/)(TripCard);
+export default connect()(TripCard);
