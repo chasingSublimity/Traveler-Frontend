@@ -2,6 +2,16 @@ import * as actions from '../actions/index';
 import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import moment from 'moment';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+const userNameInCookie = cookies.get('userName');
+let loginLinkState;
+if (userNameInCookie) {
+	loginLinkState = 'Logout';
+} else {
+	loginLinkState = 'Login';
+}
 
 const initialState = {
 	isAppBarPopoverOpen: false,
@@ -9,6 +19,7 @@ const initialState = {
 	snackbarMessage: '',
 	progressSpinnerDisplayProp: 'none',
 	isButtonDisabled: true,
+	navbarLoginLinkText: loginLinkState,
 	popOverAnchor: null,
 	newMemoryImageUrl: '',
 	userName: '',
@@ -56,7 +67,11 @@ const mainReducer = (state=initialState, action) => {
 		return newState;
 
 	case actions.ATTEMPT_LOGIN_SUCCESS:
-		newState = Object.assign({}, state, {userName: action.value});
+		newState = Object.assign({}, state, {userName: action.value, navbarLoginLinkText: 'Logout'});
+		return newState;
+
+	case actions.LOGOUT:
+		newState = Object.assign({}, state, {navbarLoginLinkText: 'Login'});
 		return newState;
 
 	case actions.LOAD_TRIP_VIEW_PAGE_SUCCESS:
