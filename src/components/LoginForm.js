@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
 import {TextField} from 'redux-form-material-ui';
 
 import '../css/LoginForm.css';
@@ -37,6 +39,7 @@ class LoginForm extends Component {
 						<span>Password: NotHereOrThere</span>
 					</p>
 				</div>
+				<CircularProgress style={{display: this.props.progressSpinnerDisplayProp}} />
 			</form>
 		); 
 	}
@@ -46,7 +49,9 @@ LoginForm = reduxForm({
 	form: 'loginForm'
 })(LoginForm);
 
+const mapStateToProps = (state, props) => ({
+	progressSpinnerDisplayProp: state.main.progressSpinnerDisplayProp,
+});
 
 
-
-export default LoginForm;
+export default connect(mapStateToProps)(LoginForm);

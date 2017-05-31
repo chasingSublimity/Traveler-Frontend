@@ -30,7 +30,7 @@ class LoginScreen extends Component {
 				<Snackbar
 					open={this.props.isSnackbarOpen}
 					message={this.props.snackbarMessage}
-					autoHideDuration={2000}
+					autoHideDuration={4000}
 					onRequestClose={this.handleRequestClose}
 				/>
 			</div>

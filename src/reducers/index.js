@@ -6,6 +6,7 @@ const initialState = {
 	isAppBarPopoverOpen: false,
 	isSnackbarOpen: false,
 	snackbarMessage: '',
+	progressSpinnerDisplayProp: 'none',
 	isButtonDisabled: true,
 	popOverAnchor: null,
 	newMemoryImageUrl: '',
@@ -38,6 +39,10 @@ const mainReducer = (state=initialState, action) => {
 
 	case actions.CLOSE_SNACKBOX:
 		newState = Object.assign({}, state, {isSnackbarOpen: false, snackbarMessage: ''});
+		return newState;
+
+	case actions.TOGGLE_PROGRESS_SPINNER:
+		newState = Object.assign({}, state, {progressSpinnerDisplayProp: action.value});
 		return newState;
 
 	case actions.SUBMIT_IMG_URL_SUCCESS:

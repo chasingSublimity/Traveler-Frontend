@@ -126,13 +126,20 @@ export const attemptLoginSuccess = value => ({
 	value
 });
 
+export const TOGGLE_PROGRESS_SPINNER = 'TOGGLE_PROGRESS_SPINNER';
+export const toggleProgressSpinner = value => ({
+	type: TOGGLE_PROGRESS_SPINNER,
+	value
+});
+
 export const attemptLogin = authData => (dispatch, getState) => {
+	// fire progress spinner
+	dispatch(toggleProgressSpinner('inline-block'));
 	const serverUrl = 'https://still-coast-98142.herokuapp.com/login';
 	// submit user login data to server
 	return axios.post(serverUrl, authData)
 		.then(response => {
 			const {userName} = (JSON.parse(response.config.data));
-			console.log(response);
 			// set cookie to userName data
 			// this will be used to create a persistant log-in
 			// and for redirects
@@ -140,7 +147,11 @@ export const attemptLogin = authData => (dispatch, getState) => {
 			dispatch(attemptLoginSuccess(userName));
 			// redirect after successful login
 			history.push('/trips');
+			// kill spinner
+			dispatch(toggleProgressSpinner('none'));
 		}).catch(err => {
+			// kill progress spinner
+			dispatch(toggleProgressSpinner('none'));
 			const responseHttpStatusCode = err.response.status;
 			// if login failed, 
 			// dispatch snackbox with appropriate error code
