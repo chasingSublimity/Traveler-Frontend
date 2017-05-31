@@ -163,6 +163,11 @@ export const attemptLogin = authData => (dispatch, getState) => {
 		});
 };
 
+export const LOGOUT = 'LOGOUT';
+export const logout = () => ({
+	type: LOGOUT
+});
+
 export const SET_USERNAME_FROM_COOKIE = 'SET_USERNAME_FROM_COOKIE';
 export const setUserNameFromCookie = value => ({
 	type: SET_USERNAME_FROM_COOKIE,
