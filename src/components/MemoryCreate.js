@@ -28,8 +28,6 @@ class MemoryCreate extends Component {
 	render() {
 		return (
 			<div className="MemoryCreate">
-
-				<h3>Create a new memory!</h3>
 				<ImageForm />
 				<MemoryCreateForm onSubmit={this.handleSubmit} />
 				<Snackbar

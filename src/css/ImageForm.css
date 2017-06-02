@@ -1,0 +1,22 @@
+.ImageFormWrapper {
+	margin-top: 85px;
+}
+
+.drop-zone {
+	margin: auto;
+  width: 200px;
+  height: 200px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  background: #afadad;
+}
+
+.drop-zone > div {
+	padding-top: 60px;
+}
+
+.fa-camera {
+	display: block;
+}

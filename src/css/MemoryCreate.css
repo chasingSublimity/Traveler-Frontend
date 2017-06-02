@@ -2,15 +2,6 @@
   text-align: center;
 }
 
-.ImageFormWrapper > div {
-	margin: auto;
-}
-
-div.MemoryCreate > div {
-  margin: auto;
-  margin-bottom: 10px;
-}
-
 .MemoryCreate-header {
   background-color: #222;
   height: 150px;

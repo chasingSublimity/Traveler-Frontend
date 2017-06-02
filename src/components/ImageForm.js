@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
 import Snackbar from 'material-ui/Snackbar';
 import uploadImageToS3 from '../helperFunctions/uploadImageToS3';
+import '../css/ImageForm.css';
 
 import * as actions from '../actions/index';
 
@@ -40,14 +41,18 @@ class ImageForm extends Component {
 	render() {
 		return (
 			<div className="ImageFormWrapper">
-				<Dropzone onDrop={this.handleDrop} 
+				<Dropzone onDrop={this.handleDrop}
+									className="drop-zone"
 									size={150}
 									multiple={false}
 									accept="image/*"
 									>
 					<div>
-						Capture or upload a picture!
-					</div>
+						<i className="fa fa-2x fa-camera" aria-hidden="true"></i>
+						<p>
+							Capture or upload a picture!
+						</p>
+					</div>		
 				</Dropzone>
 				<Snackbar
 					open={this.props.isSnackbarOpen}
