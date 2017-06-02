@@ -5,12 +5,23 @@ import moment from 'moment';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
+// sets initial login button message
 const userNameInCookie = cookies.get('userName');
 let loginLinkState;
 if (userNameInCookie) {
 	loginLinkState = 'Logout';
 } else {
 	loginLinkState = 'Login';
+}
+
+// sets imageFormMessage
+let imageFormMessageState;
+if (window.matchMedia('(min-width: 1025px)').matches) {
+  /* the viewport is at least 400 pixels wide */
+	imageFormMessageState = 'Drag your image here';
+} else {
+  /* the viewport is less than 400 pixels wide */
+	imageFormMessageState = 'Capture an image';
 }
 
 const initialState = {
@@ -21,6 +32,7 @@ const initialState = {
 	isButtonDisabled: true,
 	navbarLoginLinkText: loginLinkState,
 	popOverAnchor: null,
+	imageFormMessage: imageFormMessageState,
 	newMemoryImageUrl: '',
 	userName: '',
 	trips: [],

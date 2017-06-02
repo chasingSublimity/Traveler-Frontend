@@ -50,7 +50,7 @@ class ImageForm extends Component {
 					<div>
 						<i className="fa fa-2x fa-camera" aria-hidden="true"></i>
 						<p>
-							Capture or upload a picture!
+							{this.props.imageFormMessage}
 						</p>
 					</div>		
 				</Dropzone>
@@ -69,7 +69,8 @@ const mapStateToProps = (state, props) => ({
 	newMemoryImageUrl: state.newMemoryImageUrl,
 	isButtonDisabled: state.main.isButtonDisabled,
 	isSnackbarOpen: state.main.isSnackbarOpen,
-	snackbarMessage: state.main.snackbarMessage
+	snackbarMessage: state.main.snackbarMessage,
+	imageFormMessage: state.main.imageFormMessage
 });
 
 export default  connect(mapStateToProps)(ImageForm);
