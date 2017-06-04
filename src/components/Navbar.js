@@ -65,7 +65,6 @@ class Navbar extends Component {
 						<Link onClick={this.handleLogout} className="nav-links" to="/login"><MenuItem primaryText={this.props.navbarLoginLinkText} /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-user"><MenuItem primaryText="New User" /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-trip"><MenuItem primaryText="New Trip" /></Link>
-						<Link onClick={this.handleRequestClose} className="nav-links" to="/new-memory"><MenuItem primaryText="New Memory" /></Link>
 						<Link onClick={this.handleRequestClose} className="nav-links" to="/trips"><MenuItem primaryText="Trips" /></Link>
 					</Menu>
 				</Popover>
