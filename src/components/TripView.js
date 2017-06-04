@@ -41,12 +41,13 @@ class TripView extends Component {
 			const beginDate = moment(trip.beginDate).format('MM/DD/YYYY');
 			const endDate = moment(trip.endDate).format('MM/DD/YYYY');
 
-			return <TripCard key={index} id={trip.id} 
-																	origin={trip.origin} 
-																	destination={trip.destination}
-																	beginDate={beginDate}
-																	endDate={endDate}
-																	/>;
+			return <TripCard key={index} 
+												id={trip.id} 
+												origin={trip.origin} 
+												destination={trip.destination}
+												beginDate={beginDate}
+												endDate={endDate}
+												/>;
 		});
 
 		return (
