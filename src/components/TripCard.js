@@ -21,6 +21,7 @@ class TripCard extends Component {
 		return (
 			<Link to="#" onClick={this.handleClick}  >
 				<GridTile
+					className="grid-tile"
 					id={this.props.id}
 					title={`${this.props.origin} -> ${this.props.destination}`} 
 					subtitle={`${this.props.beginDate} -> ${this.props.endDate}`}

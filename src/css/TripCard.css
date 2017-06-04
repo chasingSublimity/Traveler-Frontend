@@ -1,0 +1,7 @@
+.grid-tile {
+	display: inline-block;
+}
+
+.grid-tile:hover {
+  opacity: 0.6;
+}
