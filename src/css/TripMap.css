@@ -27,7 +27,8 @@ div.memory-controls > div {
 .newMemoryButtonContainer {
 	display: block;
 	text-align: center;
-	margin-bottom: 10px;
+	margin: auto auto 10px;
+	width: 50%;
 }
 
 .newMemoryButton {

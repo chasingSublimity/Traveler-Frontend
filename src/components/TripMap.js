@@ -75,7 +75,7 @@ class TripMap extends Component {
 					{memoryMarkers}
 				</Map>
 				<Link className="newMemoryButtonContainer" to="/new-memory">
-					<RaisedButton className="newMemoryButton" label="Add Memory" type="submit" />
+					<RaisedButton primary={true} fullWidth={true} className="newMemoryButton" label="Add Memory" type="submit" />
 				</Link>
 			</div>
 		); 
