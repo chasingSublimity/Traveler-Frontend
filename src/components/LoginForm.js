@@ -29,7 +29,7 @@ class LoginForm extends Component {
 									name="password"/>
 					<br/>	
 				</div>
-				<RaisedButton label="Submit" type="submit" />
+				<RaisedButton primary={true} label="Submit" type="submit" />
 				<div>
 					<p>
 						<span>Want to see a demo?</span>

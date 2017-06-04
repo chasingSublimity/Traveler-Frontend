@@ -42,7 +42,7 @@ class UserCreateForm extends Component {
 								name="password"/>
 
 				<br/>
-				<RaisedButton className="submit-button" label="Submit" type="submit" />
+				<RaisedButton primary={true} className="submit-button" label="Submit" type="submit" />
 			</form>
 		); 
 	}
