@@ -20,10 +20,10 @@ export default class LandingPage extends Component {
 				</Paper>
 				<br/>
 				<Link className="buttonContainer" to="/login">
-					<RaisedButton className="loginButton" label="Login" type="submit" />
+					<RaisedButton primary={true} className="loginButton" label="Login" type="submit" />
 				</Link>
 				<Link className="buttonContainer" to="/new-user">
-					<RaisedButton className="newUserButton" label="Sign-up" type="submit" />
+					<RaisedButton primary={true} className="newUserButton" label="Sign-up" type="submit" />
 				</Link>
 			</div>
 		);
