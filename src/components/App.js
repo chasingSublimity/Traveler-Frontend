@@ -35,6 +35,10 @@ class App extends Component {
 		if (tripIdInCookie) {
 			this.props.dispatch(actions.selectTrip(tripIdInCookie));
 		}
+
+		// fire console message pointing towards backend stack
+		console.log(`Hey there! Peaking under the hood? :) You can find the backend repo here: https://github.com/chasingSublimity/Traveler-Backend`
+		);
 	}
 
 	render() {
