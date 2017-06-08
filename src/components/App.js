@@ -54,7 +54,7 @@ class App extends Component {
 																					(<Redirect to="/login"/>)
 																)} />
 
-				<Route exact path="/new-memory"render={() => (
+				<Route exact path="/new-memory" render={() => (
 																isUserLoggedIn(cookies.get('userName')) ? (<MemoryCreate />) : 
 																					(<Redirect to="/login"/>)
 																)} />
