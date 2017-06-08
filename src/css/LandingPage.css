@@ -23,12 +23,22 @@
 	display: inline-block;
 }
 
-.mockup-text {
-
-}
-
 .buttonContainer {
 	display: inline-block;
 	text-align: center;
-	margin: 10px 5px;
+	margin: 20px 5px;
+}
+
+footer {
+	background-color: rgb(33,33,33);
+	margin-top: 35px;
+}
+
+footer > p {
+	color: white;
+}
+
+.gh-icon {
+	color: white;
+  margin: 10px 0 15px 7px;
 }

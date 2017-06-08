@@ -25,6 +25,14 @@ export default class LandingPage extends Component {
 				<Link className="buttonContainer" to="/new-user">
 					<RaisedButton primary={true} className="newUserButton" label="Sign-up" type="submit" />
 				</Link>
+				<footer>
+					<p>
+						Built by Blake Sager
+						<a href="https://github.com/chasingSublimity/Traveler-Frontend">
+							<i className="fa fa-github fa-lg gh-icon" aria-hidden="true"></i>
+						</a>
+					</p>
+				</footer>
 			</div>
 		);
 	}
