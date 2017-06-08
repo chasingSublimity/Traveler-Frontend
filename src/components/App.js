@@ -37,7 +37,7 @@ class App extends Component {
 		}
 
 		// fire console message pointing towards backend stack
-		console.log(`Hey there! Peaking under the hood? :) You can find the backend repo here: https://github.com/chasingSublimity/Traveler-Backend`
+		console.log('Hey there! Peaking under the hood? :) You can find the backend repo here: https://github.com/chasingSublimity/Traveler-Backend'
 		);
 	}
 
