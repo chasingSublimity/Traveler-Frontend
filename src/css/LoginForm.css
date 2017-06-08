@@ -4,7 +4,8 @@ h3 {
 
 .LoginForm-form {
   text-align: center;
-  border: 3px black solid;
+  border: 3px #cccccc solid;
+  border-radius: 5px;
   max-width: 325px;
   min-height: 355px;
   margin: auto;
