@@ -7,7 +7,6 @@ import store from './store';
 import './css/index.css';
 
 import App from './components/App';
-// import {routes} from './components/Routes.js';
 
 
 ReactDOM.render(
