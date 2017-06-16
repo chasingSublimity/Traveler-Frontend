@@ -100,6 +100,8 @@ export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispat
 		.then(response => {
 			if (response.status === 201) {
 				dispatch(openSnackbox('Success!'));
+				// redirect to trip map
+				history.push('/map');
 			}
 		}).catch(err => {
 			console.log(err);
