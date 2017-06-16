@@ -38,6 +38,7 @@ class ImageForm extends Component {
 				this.props.dispatch(actions.openSnackbox('Whoops, something went wrong!'));
 			});
 		}
+		// handle invalid file types
 		catch(err) {
 			console.log(err);
 			this.props.dispatch(actions.openSnackbox('Whoops, that file type is invalid!'));
