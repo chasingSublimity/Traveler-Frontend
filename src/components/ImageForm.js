@@ -40,12 +40,14 @@ class ImageForm extends Component {
 			.catch(err => {
 				console.log(err);
 				this.props.dispatch(actions.openSnackbox('Whoops, something went wrong!'));
+				this.props.dispatch(actions.toggleProgressSpinner('none'));
 			});
 		}
 		// handle invalid file types
 		catch(err) {
 			console.log(err);
 			this.props.dispatch(actions.openSnackbox('Whoops, that file type is invalid!'));
+			this.props.dispatch(actions.toggleProgressSpinner('none'));
 		}
 	}
 
