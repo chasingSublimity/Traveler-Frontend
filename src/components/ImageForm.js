@@ -23,19 +23,25 @@ class ImageForm extends Component {
 	// uploads the img to s3 via helper function
 	// and adds the img url to the state (which is later sent to the database)
 	handleDrop(files) {
-		uploadImageToS3(files)
-		.then(returnData => {
-			// fire action which adds url to state
-			this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
-			// once the file has been uploaded, the form submission button is enabled.
-			// This will prevent the user from submitting memories without images.
-			this.props.dispatch(actions.toggleButton(this.props.isButtonDisabled));
-			this.props.dispatch(actions.openSnackbox('Image ready to upload!'));
-		})
-		.catch(err => {
+		try {
+			uploadImageToS3(files)
+			.then(returnData => {
+				// fire action which adds url to state
+				this.props.dispatch(actions.submitImgUrlSuccess(returnData.config.url));
+				// once the file has been uploaded, the form submission button is enabled.
+				// This will prevent the user from submitting memories without images.
+				this.props.dispatch(actions.toggleButton(this.props.isButtonDisabled));
+				this.props.dispatch(actions.openSnackbox('Image ready to upload!'));
+			})
+			.catch(err => {
+				console.log(err);
+				this.props.dispatch(actions.openSnackbox('Whoops, something went wrong!'));
+			});
+		}
+		catch(err) {
 			console.log(err);
-			this.props.dispatch(actions.openSnackbox('Whoops, something went wrong!'));
-		});
+			this.props.dispatch(actions.openSnackbox('Whoops, that file type is invalid!'));
+		}
 	}
 
 	render() {
