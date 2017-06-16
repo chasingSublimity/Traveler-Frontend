@@ -14,8 +14,5 @@ class TripMapContainer extends Component {
 
 }
 
-// const mapStateToProps = (state, props) => ({
 
-// });
-
-export default connect(/*mapStateToProps*/)(TripMapContainer);
+export default connect()(TripMapContainer);
