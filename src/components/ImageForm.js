@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
 import Snackbar from 'material-ui/Snackbar';
+import CircularProgress from 'material-ui/CircularProgress';
 import uploadImageToS3 from '../helperFunctions/uploadImageToS3';
 import '../css/ImageForm.css';
 
@@ -23,6 +24,8 @@ class ImageForm extends Component {
 	// uploads the img to s3 via helper function
 	// and adds the img url to the state (which is later sent to the database)
 	handleDrop(files) {
+		// fire progress spinner
+		this.props.dispatch(actions.toggleProgressSpinner('inline-block'));
 		try {
 			uploadImageToS3(files)
 			.then(returnData => {
@@ -32,6 +35,7 @@ class ImageForm extends Component {
 				// This will prevent the user from submitting memories without images.
 				this.props.dispatch(actions.toggleButton(this.props.isButtonDisabled));
 				this.props.dispatch(actions.openSnackbox('Image ready to upload!'));
+				this.props.dispatch(actions.toggleProgressSpinner('none'));
 			})
 			.catch(err => {
 				console.log(err);
@@ -61,6 +65,7 @@ class ImageForm extends Component {
 						</p>
 					</div>		
 				</Dropzone>
+				<CircularProgress style={{display: this.props.progressSpinnerDisplayProp, margin: '5px'}} />
 				<Snackbar
 					open={this.props.isSnackbarOpen}
 					message={this.props.snackbarMessage}
@@ -77,7 +82,8 @@ const mapStateToProps = (state, props) => ({
 	isButtonDisabled: state.main.isButtonDisabled,
 	isSnackbarOpen: state.main.isSnackbarOpen,
 	snackbarMessage: state.main.snackbarMessage,
-	imageFormMessage: state.main.imageFormMessage
+	imageFormMessage: state.main.imageFormMessage,
+	progressSpinnerDisplayProp: state.main.progressSpinnerDisplayProp,
 });
 
 export default  connect(mapStateToProps)(ImageForm);
