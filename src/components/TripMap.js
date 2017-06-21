@@ -13,7 +13,7 @@ import '../css/TripMap.css';
 const cookies = new Cookies();
 
 // static values, so these arent included in the store
-const stamenTonerTiles = 'http://tile.stamen.com/toner/{z}/{x}/{y}.png';
+const stamenTonerTiles = 'https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png';
 const stamenTonerAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
 class TripMap extends Component {
