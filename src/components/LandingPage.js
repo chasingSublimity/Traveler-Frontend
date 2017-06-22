@@ -17,6 +17,9 @@ export default class LandingPage extends Component {
 						<br/>
 						<span>Traveler can help.</span>   
 					</p>
+					<p>
+						Create trips, upload photos, and view your memories plotted out on a map
+					</p>
 				</Paper>
 				<br/>
 				<Link className="buttonContainer" to="/login">
