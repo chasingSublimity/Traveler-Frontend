@@ -31,7 +31,9 @@
 
 footer {
 	background-color: rgb(33,33,33);
-	margin-top: 35px;
+	position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer > p {
