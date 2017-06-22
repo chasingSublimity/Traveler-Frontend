@@ -104,8 +104,13 @@ export const submitMemoryCreateForm = (memoryData, newMemoryImageUrl) => (dispat
 				history.push('/map');
 			}
 		}).catch(err => {
-			console.log(err);
-			dispatch(openSnackbox('Whoops, something went wrong!'));
+			// handle invalid location error
+			if (err.response.data.message === 'notNull Violation: location cannot be null') {
+				dispatch(openSnackbox('Invalid location, please try again.'));
+			// handle other server errors
+			} else {
+				dispatch(openSnackbox('Whoops, something went wrong!'));
+			}
 		});
 };
 
